@@ -11,13 +11,13 @@ import 'swiper/css/pagination';
 import '../src/views/gallery/gallery.css';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Suspense fallback={<div>Loading...</div>}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <App />
-      </ThemeProvider>
-    </Suspense>
-  </React.StrictMode>,
-  document.getElementById('root'),
+	<React.StrictMode>
+		<Suspense fallback={<div>Loading...</div>}>
+			<ThemeProvider theme={theme}>
+				<CssBaseline />
+				<App />
+			</ThemeProvider>
+		</Suspense>
+	</React.StrictMode>,
+	document.getElementById('root'),
 );

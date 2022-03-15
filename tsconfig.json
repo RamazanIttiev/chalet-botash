@@ -1,30 +1,38 @@
 {
   "compilerOptions": {
-    "extends": ["airbnb"],
-    "parserOptions": {
-      "project": "./tsconfig.json"
-    },
     "target": "es5",
+    "types": [
+      "node",
+      "jest"
+    ],
+    "module": "commonjs",
+    "strict": true,
+    "strictFunctionTypes": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "jsx": "react-jsx",
+    "noImplicitReturns": true,
+    "outDir": "build",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "baseUrl": ".",
+    "typeRoots": [
+      "./node_modules/@types"
+    ],
+    "allowSyntheticDefaultImports": true,
     "lib": [
       "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx"
+      "es6",
+      "scripthost",
+      "es2015.symbol",
+      "es2017.object",
+      "es2016.array.include"
+    ]
   },
   "include": [
-    "src"
+    "src/**/*"
   ]
 }
