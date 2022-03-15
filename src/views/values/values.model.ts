@@ -1,6 +1,6 @@
-import LocationImg from '../../assets/location.jpeg';
-import HouseImg from '../../assets/location.jpeg';
-import FacilitiesImg from '../../assets/facilities.jpeg';
+import LocationImg from './assets/location.jpeg';
+import HouseImg from './assets/location.jpeg';
+import FacilitiesImg from './assets/facilities.jpeg';
 import i18n from 'i18next';
 
 interface ValuesDataProps {

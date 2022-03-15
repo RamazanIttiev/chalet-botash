@@ -1,5 +1,5 @@
 import React from 'react';
-import Gallery from '../views/Gallery';
+import { Gallery } from '../views/gallery/Gallery';
 import { Promo } from '../views/Promo';
 import { Values } from '../views/values/Values';
 import { Box } from '@mui/system';
