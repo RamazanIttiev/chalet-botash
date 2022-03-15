@@ -1,7 +1,7 @@
 import React from 'react';
 import Gallery from '../views/Gallery';
-import Promo from '../views/Promo';
-import Values from '../views/Values';
+import { Promo } from '../views/Promo';
+import { Values } from '../views/values/Values';
 import { Box } from '@mui/system';
 
 function Index() {

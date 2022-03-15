@@ -3,7 +3,7 @@ import Typography from '../components/Typography';
 import PromoLayout from './PromoLayout';
 import HeroBgr from '../assets/road-street-highway-travel.jpeg';
 
-export default function Promo() {
+export const Promo = () => {
   return (
     <PromoLayout
       sxBackground={{
@@ -15,14 +15,15 @@ export default function Promo() {
       {/* Increase the network loading priority of the background image. */}
       <img style={{ display: 'none' }} src={HeroBgr} alt="increase priority" />
       <Typography color="inherit" align="center" variant="h2" marked="center">
-        Upgrade your Sundays
+        Гостевой дом Chalet Botash
       </Typography>
       <Typography color="inherit" align="center" variant="h5" sx={{ mb: 4, mt: 4 }}>
-        Enjoy secret offers up to -70% off the best luxury hotels every Sunday.
+        Приглашаем Вас почувствовать знаменитое кавказское гостеприимство, вдохнуть чистый, горный
+        воздух и на время забыть про городскую суету у Нас в гостевом доме Chalet Botash
       </Typography>
       <Typography variant="body2" color="inherit" sx={{ mt: 2 }}>
         Discover the experience
       </Typography>
     </PromoLayout>
   );
-}
+};
