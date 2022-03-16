@@ -5,7 +5,7 @@ import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import { ArrowDownward } from '@mui/icons-material';
 
-const ProductHeroLayoutRoot = styled('section')(({ theme }: { theme: any }) => ({
+const ProductHeroLayoutRoot = styled('section')(({ theme }: { theme: Theme }) => ({
 	color: theme.palette.common.white,
 	position: 'relative',
 	display: 'flex',

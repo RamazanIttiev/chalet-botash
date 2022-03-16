@@ -1,14 +1,14 @@
 import React from 'react';
-import { Gallery } from '../views/gallery/Gallery';
+import { Gallery } from '../views/gallery/gallery';
 import { Promo } from '../views/Promo';
-import { Values } from '../views/values/Values';
+import { InformationContainer } from '../views/information/container/information.container';
 import { Box } from '@mui/system';
 
 function Index() {
 	return (
 		<Box component="main" sx={{ flexGrow: 1 }}>
 			<Promo />
-			<Values />
+			<InformationContainer />
 			<Gallery />
 		</Box>
 	);

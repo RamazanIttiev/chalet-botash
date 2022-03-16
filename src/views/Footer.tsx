@@ -3,8 +3,8 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { Instagram, Telegram, WhatsApp } from '@mui/icons-material';
 import { FormControlLabel, FormGroup, Radio, RadioGroup } from '@mui/material';
-import { useTranslation } from 'react-i18next';
 import Typography from '../components/Typography';
+import { changeLanguage } from 'i18next';
 
 const iconStyle = {
 	width: 48,
@@ -21,7 +21,6 @@ const iconStyle = {
 };
 
 export const Footer = () => {
-	const { i18n } = useTranslation();
 	const [value, setValue] = useState(localStorage.getItem('i18nextLng'));
 
 	const handleChange = (event: { target: HTMLInputElement }) => {
@@ -29,7 +28,7 @@ export const Footer = () => {
 	};
 
 	const handleClick = (language: string) => {
-		i18n.changeLanguage(language);
+		changeLanguage(language);
 	};
 
 	return (

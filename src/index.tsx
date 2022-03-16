@@ -8,7 +8,7 @@ import './i18n';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import '../src/views/gallery/gallery.css';
+import './views/gallery/carousel.css';
 
 ReactDOM.render(
 	<React.StrictMode>
