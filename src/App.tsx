@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Error from './pages/Error';
 import Home from './pages/Home';
-import { Header } from './views/Header';
+import { Header } from './views/header';
 import { Footer } from './views/footer';
 
 const App = () => {

@@ -47,6 +47,7 @@ export const InformationContainer = () => {
 	];
 	return (
 		<Box
+			id="about"
 			component="section"
 			sx={{
 				display: 'flex',

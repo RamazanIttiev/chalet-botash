@@ -10,7 +10,7 @@ import Box from '@mui/material/Box';
 export const Gallery = () => {
 	const { t } = useTranslation();
 	return (
-		<Container component="section" sx={{ p: '64px 0' }}>
+		<Container id="gallery" component="section" sx={{ p: '64px 0' }}>
 			<Typography variant="h4" align="center" component="h2" mb={8}>
 				{t('gallery.title')}
 			</Typography>

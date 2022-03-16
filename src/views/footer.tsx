@@ -32,7 +32,11 @@ export const Footer = () => {
 	};
 
 	return (
-		<Typography component="footer" marked="center" sx={{ backgroundColor: 'secondary.light', flexShrink: 0 }}>
+		<Typography
+			id="contacts"
+			component="footer"
+			marked="center"
+			sx={{ backgroundColor: 'secondary.light', flexShrink: 0 }}>
 			<Grid container>
 				<Grid item xs={12} sm={6} md={6} display={'flex'} alignItems={'center'}>
 					<Grid container spacing={4} sx={{ p: '24px 0', alignItems: 'center', flexDirection: 'column' }}>

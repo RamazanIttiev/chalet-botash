@@ -37,7 +37,7 @@ export default function PromoLayout(props: React.HTMLAttributes<HTMLDivElement> 
 	const { sxBackground, children } = props;
 
 	return (
-		<ProductHeroLayoutRoot>
+		<ProductHeroLayoutRoot id="home">
 			<Container
 				sx={{
 					mt: 3,
