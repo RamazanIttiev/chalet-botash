@@ -37,13 +37,17 @@ export const Footer = () => {
 				<Grid item xs={12} sm={6} md={6} display={'flex'} alignItems={'center'}>
 					<Grid container spacing={4} sx={{ p: '24px 0', alignItems: 'center', flexDirection: 'column' }}>
 						<Grid item xs={12} sm={3} md={6} display={'flex'} justifyContent={'center'}>
-							<Box component="a" href="https://mui.com/" sx={iconStyle}>
+							<Box component="a" target={'_blank'} href="https://wa.me/89214425044" sx={iconStyle}>
 								<WhatsApp />
 							</Box>
-							<Box component="a" href="https://twitter.com/MaterialUI" sx={iconStyle}>
+							<Box
+								component="a"
+								target={'_blank'}
+								href="https://instagram.com/ibra_botashev?utm_medium=copy_link"
+								sx={iconStyle}>
 								<Instagram />
 							</Box>
-							<Box component="a" href="https://twitter.com/MaterialUI" sx={iconStyle}>
+							<Box component="a" target={'_blank'} href="https://t.me/Ibotashev" sx={iconStyle}>
 								<Telegram />
 							</Box>
 						</Grid>
@@ -64,12 +68,26 @@ export const Footer = () => {
 						</Grid>
 					</Grid>
 				</Grid>
-				<Grid item xs={12} sm={6} md={6} height={'300px'}>
+				<Grid item xs={12} sm={6} md={6}>
+					{/*<Box sx={{ position: 'relative', overflow: 'hidden' }}>*/}
+					{/*	<Link*/}
+					{/*		href="https://yandex.ru/maps?utm_medium=mapframe&utm_source=maps"*/}
+					{/*		sx={{ color: '#eee', fontSize: '12px', position: 'absolute', top: 0 }}>*/}
+					{/*		Яндекс Карты*/}
+					{/*	</Link>*/}
+					{/*	<Link*/}
+					{/*		href="https://yandex.ru/maps/?ll=42.683177%2C43.274920&mode=routes&rtext=~43.272964%2C42.682418&rtt=auto&ruri=~&utm_medium=mapframe&utm_source=maps&z=16.54"*/}
+					{/*		sx={{ color: '#eee', fontSize: '12px', position: 'absolute', top: 14 }}>*/}
+					{/*		Баксанское ущелье — Яндекс Карты*/}
+					{/*	</Link>*/}
+					{/*</Box>*/}
 					<iframe
-						title="map"
-						style={{ width: '100%', height: '100%' }}
-						src="https://yandex.ru/map-widget/v1/?um=constructor%3A1e597e3c79a2b4b486ac6ca42db3d58366ac61a7cb8637070690816f1c9d99fc&amp;source=constructor"
-						frameBorder="0"
+						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2904.9938868203412!2d42.68075131539982!3d43.27250388498218!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xfa9555d3e71ae999!2zNDPCsDE2JzIxLjAiTiA0MsKwNDAnNTguNiJF!5e0!3m2!1sru!2sru!4v1647419800631!5m2!1sru!2sru"
+						width="100%"
+						height="450"
+						style={{ border: 0 }}
+						allowFullScreen={true}
+						loading="lazy"
 					/>
 				</Grid>
 			</Grid>
