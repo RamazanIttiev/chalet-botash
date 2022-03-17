@@ -8,15 +8,15 @@
 }
 
 .swiper-button-next::after, .swiper-button-prev::after {
-    content: ''
+    color: white;
 }
 
 .swiper-button-next {
-    right: 0;
+    right: -64px;
     left: auto;
 }
 
 .swiper-button-prev {
     right: auto;
-    left: 0;
+    left: -64px;
 }

@@ -65,8 +65,18 @@ export const Footer = () => {
 									value={value}
 									onChange={handleChange}
 									sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
-									<FormControlLabel value="ru" onClick={() => handleClick('ru')} control={<Radio />} label="Rus" />
-									<FormControlLabel value="en" onClick={() => handleClick('en')} control={<Radio />} label="Eng" />
+									<FormControlLabel
+										value="ru"
+										onClick={() => handleClick('ru')}
+										control={<Radio />}
+										label="Rus"
+									/>
+									<FormControlLabel
+										value="en"
+										onClick={() => handleClick('en')}
+										control={<Radio />}
+										label="Eng"
+									/>
 								</RadioGroup>
 							</FormGroup>
 						</Grid>

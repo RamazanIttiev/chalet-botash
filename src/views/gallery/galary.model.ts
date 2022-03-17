@@ -1,12 +1,4 @@
-import House1 from '../gallery/assets/House1.jpeg';
-import House2 from '../gallery/assets/House2.jpeg';
-import House3 from '../gallery/assets/House3.jpeg';
-import Room1 from '../gallery/assets/Room1.jpeg';
-import Room2 from '../gallery/assets/Room2.jpeg';
-import Room3 from '../gallery/assets/Room3.jpeg';
-import Room4 from '../gallery/assets/Room4.jpeg';
-import Room5 from '../gallery/assets/Room5.jpeg';
-import Room6 from '../gallery/assets/Room6.jpeg';
+import LocationImg from '../gallery/assets/House2.jpg';
 
 interface GalleryDataProps {
 	title: string;
@@ -16,38 +8,38 @@ interface GalleryDataProps {
 export const galleryData: GalleryDataProps[] = [
 	{
 		title: 'chalet',
-		image: House1,
+		image: LocationImg,
 	},
 	{
 		title: 'chalet',
-		image: House2,
+		image: LocationImg,
 	},
 	{
 		title: 'chalet',
-		image: House3,
+		image: LocationImg,
 	},
 	{
 		title: 'chalet',
-		image: Room1,
+		image: LocationImg,
 	},
 	{
 		title: 'chalet',
-		image: Room2,
+		image: LocationImg,
 	},
 	{
 		title: 'chalet',
-		image: Room3,
+		image: LocationImg,
 	},
 	{
 		title: 'chalet',
-		image: Room4,
+		image: LocationImg,
 	},
 	{
 		title: 'chalet',
-		image: Room5,
+		image: LocationImg,
 	},
 	{
 		title: 'chalet',
-		image: Room6,
+		image: LocationImg,
 	},
 ];
