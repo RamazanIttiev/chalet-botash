@@ -109,34 +109,6 @@ export const Gallery = () => {
 			<Typography variant="h4" align="center" component="h2" mb={8}>
 				{t('gallery.title')}
 			</Typography>
-			{/*<Swiper*/}
-			{/*	direction={'horizontal'}*/}
-			{/*	slidesPerView={2}*/}
-			{/*	centeredSlides={true}*/}
-			{/*	spaceBetween={30}*/}
-			{/*	mousewheel={true}*/}
-			{/*	loop={true}*/}
-			{/*	lazy={true}*/}
-			{/*	navigation={true}*/}
-			{/*	grabCursor={true}*/}
-			{/*	modules={[Lazy, Mousewheel, Navigation]}*/}
-			{/*	className="mySwiper">*/}
-			{/*	{galleryData.map(({ title, image }, index) => {*/}
-			{/*		return (*/}
-			{/*			<SwiperSlide key={index}>*/}
-			{/*				<Box*/}
-			{/*					component={'img'}*/}
-			{/*					src={image}*/}
-			{/*					alt={title}*/}
-			{/*					sx={{*/}
-			{/*						width: 515,*/}
-			{/*						height: 450,*/}
-			{/*					}}*/}
-			{/*				/>*/}
-			{/*			</SwiperSlide>*/}
-			{/*		);*/}
-			{/*	})}*/}
-			{/*</Swiper>*/}
 			<Box sx={{ mt: 8, display: 'flex', flexWrap: 'wrap' }}>
 				{images.map(image => (
 					<ImageIconButton
