@@ -1,6 +1,6 @@
 import React from 'react';
 import { Gallery } from '../views/gallery/gallery';
-import { Promo } from '../views/promo';
+import { Promo } from '../views/promo/promo';
 import { AboutContainer } from '../views/about/container/about.container';
 import { Box } from '@mui/system';
 

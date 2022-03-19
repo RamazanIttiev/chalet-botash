@@ -1,18 +1,18 @@
 import React from 'react';
-import Typography from '../components/Typography';
+import Typography from '../../components/Typography';
 import PromoLayout from './promo-layout';
-import HeroBgr from '../assets/road-street-highway-travel.jpeg';
+import PromoBgr from './assets/PromoBgr.jpeg';
 
 export const Promo = () => {
 	return (
 		<PromoLayout
 			sxBackground={{
-				backgroundImage: `url(${HeroBgr})`,
+				backgroundImage: `url(${PromoBgr})`,
 				backgroundColor: '#7fc7d9', // Average color of the background image.
 				backgroundPosition: 'center',
 			}}>
 			{/* Increase the network loading priority of the background image. */}
-			<img style={{ display: 'none' }} src={HeroBgr} alt="increase priority" />
+			<img style={{ display: 'none' }} src={PromoBgr} alt="increase priority" />
 			<Typography color="inherit" align="center" variant="h2" marked="center">
 				Гостевой дом Chalet Botash
 			</Typography>
