@@ -1,28 +1,15 @@
-import React, { useState } from 'react';
-import { AppBar, Box, FormControlLabel, FormGroup, Link, Radio, RadioGroup, Toolbar } from '@mui/material';
+import React, { FC } from 'react';
+import { AppBar, Box, Link, Toolbar } from '@mui/material';
 import { Trans, useTranslation } from 'react-i18next';
-import { changeLanguage } from 'i18next';
+import RadioGroup from '../components/RadioGroup';
+import { LanguageModal } from '../modals/language.modal';
 
-export const Header = () => {
+export const Header: FC<LanguageModal> = ({ value, changeLang }) => {
 	const { t } = useTranslation();
 
-	const [value, setValue] = useState(localStorage.getItem('i18nextLng'));
-
-	const handleChange = (event: { target: HTMLInputElement }) => {
-		setValue(event.target.value);
-	};
-
-	const changeLang = (language: string) => {
-		changeLanguage(language);
-	};
-
 	return (
-		<AppBar position="fixed">
-			<Toolbar
-				sx={{
-					display: 'grid',
-					gridTemplateColumns: ' 35% 49% 15%',
-				}}>
+		<AppBar position="fixed" enableColorOnDark>
+			<Toolbar>
 				<Link
 					variant="h6"
 					underline="none"
@@ -59,16 +46,7 @@ export const Header = () => {
 						Контакты
 					</Link>
 				</Box>
-				<FormGroup>
-					<RadioGroup
-						defaultValue={value}
-						value={value}
-						onChange={handleChange}
-						sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
-						<FormControlLabel value="ru" onClick={() => changeLang('ru')} control={<Radio />} label="Rus" />
-						<FormControlLabel value="en" onClick={() => changeLang('en')} control={<Radio />} label="Eng" />
-					</RadioGroup>
-				</FormGroup>
+				<RadioGroup color={'secondary'} changeLang={changeLang} value={value} />
 			</Toolbar>
 		</AppBar>
 	);

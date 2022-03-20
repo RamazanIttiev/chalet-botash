@@ -3,6 +3,7 @@ import { green, grey, red } from '@mui/material/colors';
 
 const rawTheme = createTheme({
 	palette: {
+		mode: 'light',
 		primary: {
 			light: '#69696a',
 			main: '#28282a',

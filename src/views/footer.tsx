@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { FC } from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { Instagram, Telegram, WhatsApp } from '@mui/icons-material';
-import { FormControlLabel, FormGroup, Radio, RadioGroup } from '@mui/material';
 import Typography from '../components/Typography';
-import { changeLanguage } from 'i18next';
+import RadioGroup from '../components/RadioGroup';
+import { LanguageModal } from '../modals/language.modal';
 
 const iconStyle = {
 	width: 48,
@@ -20,17 +20,7 @@ const iconStyle = {
 	},
 };
 
-export const Footer = () => {
-	const [value, setValue] = useState(localStorage.getItem('i18nextLng'));
-
-	const handleChange = (event: { target: HTMLInputElement }) => {
-		setValue(event.target.value);
-	};
-
-	const handleClick = (language: string) => {
-		changeLanguage(language);
-	};
-
+export const Footer: FC<LanguageModal> = ({ value, changeLang }) => {
 	return (
 		<Typography
 			id="contacts"
@@ -59,26 +49,7 @@ export const Footer = () => {
 							<Typography variant="h6" marked="center" textAlign="center" gutterBottom>
 								Language
 							</Typography>
-							<FormGroup>
-								<RadioGroup
-									defaultValue={value}
-									value={value}
-									onChange={handleChange}
-									sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
-									<FormControlLabel
-										value="ru"
-										onClick={() => handleClick('ru')}
-										control={<Radio />}
-										label="Rus"
-									/>
-									<FormControlLabel
-										value="en"
-										onClick={() => handleClick('en')}
-										control={<Radio />}
-										label="Eng"
-									/>
-								</RadioGroup>
-							</FormGroup>
+							<RadioGroup value={value} changeLang={changeLang} color={'primary'} />
 						</Grid>
 					</Grid>
 				</Grid>
