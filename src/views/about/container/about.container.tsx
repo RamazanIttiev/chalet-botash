@@ -1,50 +1,26 @@
-import React from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
-import { AboutDataProps } from '../about.model';
-import { Services } from '../components/about';
-import LocationImg from '../assets/House2.jpg';
-import HouseImg from '../assets/House2.jpg';
-import FacilitiesImg from '../assets/House2.jpg';
-import { useTranslation } from 'react-i18next';
+import { About } from '../components/about';
+import { airtableBase } from '../../../app';
+import { AboutData } from '../about.model';
+import { mapAboutData } from '../../../services/mappers';
 
-export const AboutContainer = () => {
-	// const [information, setServices] = useState<InformationDataProps[]>(informationData);
-	//
-	// useEffect(() => {
-	// 	setServices(informationData);
-	// }, []);
+export const AboutContainer: FC = () => {
+	const [data, setData] = useState<AboutData[]>([]);
 
-	const { t } = useTranslation();
-	const aboutData: AboutDataProps[] = [
-		{
-			title: 'location',
-			icon: LocationImg,
-		},
-		{
-			title: 'chalet',
-			icon: HouseImg,
-		},
-		{
-			title: 'facilities',
-			description: [
-				{
-					title: t('values.facilities.block.description.rooms.title'),
-					text: t('values.facilities.block.description.rooms.text'),
-				},
-				{
-					title: t('values.facilities.block.description.food.title'),
-					text: t('values.facilities.block.description.food.text'),
-				},
-				{
-					title: t('values.facilities.block.description.entertainment.title'),
-					text: t('values.facilities.block.description.entertainment.text'),
-				},
-			],
-			icon: FacilitiesImg,
-		},
-	];
+	useEffect(() => {
+		airtableBase('About')
+			.select({
+				view: 'Grid view',
+			})
+			.eachPage(records => {
+				// @ts-ignore
+				return setData(mapAboutData(records));
+			});
+	}, []);
+
 	return (
 		<Box
 			id="about"
@@ -69,7 +45,7 @@ export const AboutContainer = () => {
 						flexWrap: 'nowrap',
 						alignItems: 'center',
 					}}>
-					<Services information={aboutData} />
+					<About data={data} />
 				</Grid>
 			</Container>
 		</Box>

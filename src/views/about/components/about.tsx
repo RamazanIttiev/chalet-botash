@@ -1,36 +1,32 @@
 import React, { FC } from 'react';
-import Box from '@mui/material/Box';
-import { Trans, useTranslation } from 'react-i18next';
-import Grid from '@mui/material/Grid';
+import { Box, Grid } from '@mui/material';
 import Typography from '../../../components/Typography';
-import { AboutDataProps } from '../about.model';
+import { AboutData } from '../about.model';
 
-interface ServicesProps {
-	information: AboutDataProps[];
+interface AboutProps {
+	data: AboutData[];
 }
 
-export const Services: FC<ServicesProps> = ({ information }) => {
-	const { t } = useTranslation();
-
+export const About: FC<AboutProps> = ({ data }) => {
 	return (
 		<React.Fragment>
-			{information.length !== 0 &&
-				information.map(({ title, icon, description }, index) => {
+			{data?.length !== 0 &&
+				data?.map(({ title, image, text, id }) => {
 					return (
 						<Grid
 							item
-							key={index}
+							key={id}
 							xs={12}
 							md={9}
 							sx={{
 								display: 'flex',
-								alignItems: 'end',
+								alignItems: 'flex-end',
 								justifyContent: 'space-between',
-								flexDirection: index % 2 === 0 ? 'row' : 'row-reverse',
+								flexDirection: id % 2 === 0 ? 'row' : 'row-reverse',
 							}}>
 							<Box
 								component={'img'}
-								src={icon}
+								src={image}
 								alt={title}
 								sx={{
 									width: 200,
@@ -42,40 +38,15 @@ export const Services: FC<ServicesProps> = ({ information }) => {
 								sx={{
 									display: 'flex',
 									flexDirection: 'column',
-									ml: index % 2 === 0 ? 6 : 'none',
-									mr: index % 2 === 0 ? 'none' : 6,
+									ml: id % 2 === 0 ? 6 : 'none',
+									mr: id % 2 === 0 ? 'none' : 6,
 								}}>
 								<Typography variant="h6" sx={{ my: 5 }}>
-									<Trans i18nKey={`values.${title}.block.title`}>
-										{t(`values.${title}.block.title`)}
-									</Trans>
+									{title}
 								</Typography>
-								{title !== 'facilities' ? (
-									<Typography variant="h5" fontSize={16} lineHeight={1.6}>
-										<Trans i18nKey={`values.${title}.block.text`}>
-											{t(`values.${title}.block.text`)}
-										</Trans>
-									</Typography>
-								) : (
-									description?.map(({ title, text }, index) => {
-										// return <CustomAccordion key={index} title={title} text={text} />;
-										return (
-											<React.Fragment>
-												<Typography
-													variant="h4"
-													component={'h3'}
-													fontSize={16}
-													lineHeight={1.6}
-													textAlign={'left'}>
-													{title}
-												</Typography>
-												<Typography variant="h5" component={'p'} fontSize={16} lineHeight={1.6}>
-													{text}
-												</Typography>
-											</React.Fragment>
-										);
-									})
-								)}
+								<Typography variant="h5" component={'p'} fontSize={16} lineHeight={1.6}>
+									{text}
+								</Typography>
 							</Box>
 						</Grid>
 					);
