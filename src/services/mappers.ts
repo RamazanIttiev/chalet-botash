@@ -7,3 +7,10 @@ export const mapAboutData = (aboutData: Records<FieldSet>) =>
 		text: fields.description,
 		image: fields.image && fields.image[0].url,
 	}));
+
+export const mapGalleryData = (galleryData: Records<FieldSet>) =>
+	galleryData.map(({ fields }) => ({
+		id: fields.id,
+		title: fields.title,
+		image: fields.image && fields.image[0].url,
+	}));

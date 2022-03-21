@@ -3,14 +3,14 @@ import React, { FC } from 'react';
 import { Box } from '@mui/material';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper';
-import { GalleryDataProps } from './galary.model';
+import { GalleryData } from '../galary.model';
 
 interface ImageCarouselProps {
 	currentIndex: number;
-	images: GalleryDataProps[];
+	images: GalleryData[];
 }
 
-const ImageCarousel: FC<ImageCarouselProps> = ({ currentIndex, images }) => {
+export const GalleryCarousel: FC<ImageCarouselProps> = ({ currentIndex, images }) => {
 	return (
 		<Swiper
 			className="mySwiper"
@@ -41,5 +41,3 @@ const ImageCarousel: FC<ImageCarouselProps> = ({ currentIndex, images }) => {
 		</Swiper>
 	);
 };
-
-export default ImageCarousel;
