@@ -12,7 +12,7 @@ export interface AboutDataProps {
 	}[];
 }
 
-export const informationData: AboutDataProps[] = [
+export const aboutData: AboutDataProps[] = [
 	{
 		title: 'location',
 		icon: LocationImg,

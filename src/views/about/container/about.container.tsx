@@ -17,7 +17,7 @@ export const AboutContainer = () => {
 	// }, []);
 
 	const { t } = useTranslation();
-	const informationData: AboutDataProps[] = [
+	const aboutData: AboutDataProps[] = [
 		{
 			title: 'location',
 			icon: LocationImg,
@@ -69,7 +69,7 @@ export const AboutContainer = () => {
 						flexWrap: 'nowrap',
 						alignItems: 'center',
 					}}>
-					<Services information={informationData} />
+					<Services information={aboutData} />
 				</Grid>
 			</Container>
 		</Box>

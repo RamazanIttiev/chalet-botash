@@ -3,7 +3,6 @@ import Box from '@mui/material/Box';
 import { Trans, useTranslation } from 'react-i18next';
 import Grid from '@mui/material/Grid';
 import Typography from '../../../components/Typography';
-import { CustomAccordion } from './about-accordion';
 import { AboutDataProps } from '../about.model';
 
 interface ServicesProps {
@@ -43,7 +42,6 @@ export const Services: FC<ServicesProps> = ({ information }) => {
 								sx={{
 									display: 'flex',
 									flexDirection: 'column',
-									alignItems: 'center',
 									ml: index % 2 === 0 ? 6 : 'none',
 									mr: index % 2 === 0 ? 'none' : 6,
 								}}>
@@ -53,14 +51,29 @@ export const Services: FC<ServicesProps> = ({ information }) => {
 									</Trans>
 								</Typography>
 								{title !== 'facilities' ? (
-									<Typography variant="h5" fontSize={16} lineHeight={1.6} textAlign={'center'}>
+									<Typography variant="h5" fontSize={16} lineHeight={1.6}>
 										<Trans i18nKey={`values.${title}.block.text`}>
 											{t(`values.${title}.block.text`)}
-										</Trans>{' '}
+										</Trans>
 									</Typography>
 								) : (
 									description?.map(({ title, text }, index) => {
-										return <CustomAccordion key={index} title={title} text={text} />;
+										// return <CustomAccordion key={index} title={title} text={text} />;
+										return (
+											<React.Fragment>
+												<Typography
+													variant="h4"
+													component={'h3'}
+													fontSize={16}
+													lineHeight={1.6}
+													textAlign={'left'}>
+													{title}
+												</Typography>
+												<Typography variant="h5" component={'p'} fontSize={16} lineHeight={1.6}>
+													{text}
+												</Typography>
+											</React.Fragment>
+										);
 									})
 								)}
 							</Box>
