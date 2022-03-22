@@ -3,6 +3,7 @@ import { Promo } from '../views/promo/promo';
 import { AboutContainer } from '../views/about/container/about.container';
 import { Box } from '@mui/system';
 import { GalleryContainer } from '../views/gallery/container/gallery.container';
+import { Rooms } from '../views/rooms/rooms';
 
 function Index() {
 	return (
@@ -10,6 +11,7 @@ function Index() {
 			<Promo />
 			<AboutContainer />
 			<GalleryContainer />
+			<Rooms />
 		</Box>
 	);
 }

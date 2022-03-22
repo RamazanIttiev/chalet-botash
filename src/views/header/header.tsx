@@ -10,7 +10,7 @@ export const Header: FC = () => {
 			<Toolbar sx={{ justifyContent: 'space-between' }}>
 				<Box
 					component={Scrollspy}
-					items={['promo', 'about', 'gallery', 'contacts']}
+					items={['promo', 'about', 'gallery', 'rooms', 'contacts']}
 					currentClassName="active-menu-tab"
 					offset={-100}
 					sx={{
@@ -62,6 +62,19 @@ export const Header: FC = () => {
 							cursor: 'pointer',
 						}}>
 						Галерея
+					</Link>
+					<Link
+						underline="none"
+						color="inherit"
+						href="#rooms"
+						sx={{
+							p: '20px',
+							fontSize: 16,
+							letterSpacing: 4,
+							position: 'relative',
+							cursor: 'pointer',
+						}}>
+						Номера
 					</Link>
 					<Link
 						underline="none"

@@ -19,7 +19,7 @@ interface GalleryProps {
 export const Gallery: FC<GalleryProps> = ({ currentIndex, gallery, toggleModal, isModalOpen, showModalImage }) => {
 	return (
 		<Container id="gallery" component="section" sx={{ p: '64px 0' }}>
-			<Typography variant="h4" align="center" component="h2" mb={8}>
+			<Typography variant="h4" align="center" component="h2">
 				ФОТОГРАФИИ ГОСТЕВОГО ДОМА &quot;CHALET BOTASH&quot;
 			</Typography>
 			<Box sx={{ mt: 8, display: 'flex', flexWrap: 'wrap' }}>
