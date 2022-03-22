@@ -1,9 +1,8 @@
 import React, { FC } from 'react';
 import { AppBar, Box, Link, Toolbar } from '@mui/material';
-import RadioGroup from '../components/RadioGroup';
-import { LanguageModal } from '../modals/language.modal';
+import Scrollspy from 'react-scrollspy';
 
-export const Header: FC<LanguageModal> = ({ value, changeLang }) => {
+export const Header: FC = () => {
 	return (
 		<AppBar position="fixed" enableColorOnDark>
 			<Toolbar sx={{ justifyContent: 'space-between' }}>
@@ -16,33 +15,85 @@ export const Header: FC<LanguageModal> = ({ value, changeLang }) => {
 						sx={{ fontSize: 24, letterSpacing: 4, cursor: 'pointer' }}>
 						Logo
 					</Link>
-					<Link
-						underline="none"
-						color="inherit"
-						href="#about"
-						sx={{
-							fontSize: 16,
-							letterSpacing: 4,
-							cursor: 'pointer',
-						}}>
-						О нас
-					</Link>
-					<Link
-						underline="none"
-						color="inherit"
-						href="#gallery"
-						sx={{ m: '0 32px', fontSize: 16, letterSpacing: 4, cursor: 'pointer' }}>
-						Галерея
-					</Link>
-					<Link
-						underline="none"
-						color="inherit"
-						href="#contacts"
-						sx={{ m: '0 32px', fontSize: 16, letterSpacing: 4, cursor: 'pointer' }}>
-						Контакты
-					</Link>
+					<Scrollspy items={['about', 'gallery', 'contacts']} currentClassName="is-current">
+						<Link
+							underline="none"
+							color="inherit"
+							href="#about"
+							sx={{
+								p: '20px',
+								fontSize: 16,
+								letterSpacing: 4,
+								position: 'relative',
+								cursor: 'pointer',
+								'&::after': {
+									content: '""',
+									position: 'absolute',
+									width: '90%',
+									height: '3px',
+									background: '#fff',
+									color: '#fff',
+									display: 'block',
+									marginTop: '8px',
+									right: '50%',
+									transform: 'translate(50%)',
+								},
+							}}>
+							О нас
+						</Link>
+						<Link
+							underline="none"
+							color="inherit"
+							href="#gallery"
+							sx={{
+								p: '20px',
+								fontSize: 16,
+								letterSpacing: 4,
+								position: 'relative',
+								cursor: 'pointer',
+								'&::after': {
+									content: '""',
+									position: 'absolute',
+									width: '90%',
+									height: '3px',
+									background: '#fff',
+									color: '#fff',
+									display: 'block',
+									marginTop: '8px',
+									right: '50%',
+									transform: 'translate(50%)',
+								},
+							}}>
+							Галерея
+						</Link>
+						<Link
+							underline="none"
+							color="inherit"
+							href="#contacts"
+							sx={{
+								p: '20px',
+								fontSize: 16,
+								letterSpacing: 4,
+								position: 'relative',
+								cursor: 'pointer',
+								'&::after': {
+									content: '""',
+									position: 'absolute',
+									width: '90%',
+									height: '3px',
+									background: '#fff',
+									color: '#fff',
+									display: 'block',
+									marginTop: '8px',
+									right: '50%',
+									transform: 'translate(50%)',
+								},
+							}}>
+							Контакты
+						</Link>
+					</Scrollspy>
 				</Box>
-				<RadioGroup color={'secondary'} changeLang={changeLang} value={value} />
+				{/*<RadioGroup color={'secondary'} changeLang={changeLang} value={value} />*/}
 			</Toolbar>
 		</AppBar>
 	);
