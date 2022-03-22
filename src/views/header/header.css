@@ -1,0 +1,12 @@
+.active-menu-tab::after {
+    content: "";
+    position: absolute;
+    width: 90%;
+    height: 3px;
+    background: #fff;
+    color: #fff;
+    display: block;
+    margin-top: 8px;
+    right: 50%;
+    transform: translate(50%);
+}
