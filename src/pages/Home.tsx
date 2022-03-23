@@ -1,9 +1,24 @@
-import React from 'react';
+import React, { lazy } from 'react';
 import { Promo } from '../views/promo/promo';
-import { AboutContainer } from '../views/about/container/about.container';
 import { Box } from '@mui/system';
-import { GalleryContainer } from '../views/gallery/container/gallery.container';
-import { Rooms } from '../views/rooms/rooms';
+
+const AboutContainer = lazy(() =>
+	import('../views/about/container/about.container').then(({ AboutContainer }) => ({
+		default: AboutContainer,
+	})),
+);
+
+const GalleryContainer = lazy(() =>
+	import('../views/gallery/container/gallery.container').then(({ GalleryContainer }) => ({
+		default: GalleryContainer,
+	})),
+);
+
+const Rooms = lazy(() =>
+	import('../views/rooms/rooms').then(({ Rooms }) => ({
+		default: Rooms,
+	})),
+);
 
 function Index() {
 	return (

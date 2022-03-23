@@ -1,9 +1,11 @@
 import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import App from './app';
-import { ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
 import theme from './theme';
+import { CircularProgress } from '@mui/material';
+import CssBaseline from '@mui/material/CssBaseline';
+import { ThemeProvider } from '@mui/material/styles';
+
 import './i18n';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -12,7 +14,7 @@ import './views/gallery/theme/carousel.css';
 
 ReactDOM.render(
 	<React.StrictMode>
-		<Suspense fallback={<div>Loading...</div>}>
+		<Suspense fallback={<CircularProgress color="inherit" />}>
 			<ThemeProvider theme={theme}>
 				<CssBaseline />
 				<App />
