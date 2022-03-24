@@ -2,6 +2,8 @@ import React, { FC } from 'react';
 import { Box, Grid } from '@mui/material';
 import Typography from '../../../components/Typography';
 import { AboutData } from '../about.model';
+import 'lazysizes';
+import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 
 interface AboutProps {
 	data: AboutData[];
@@ -26,7 +28,8 @@ export const About: FC<AboutProps> = ({ data }) => {
 							}}>
 							<Box
 								component={'img'}
-								src={image}
+								data-src={image}
+								className="lazyload"
 								alt={title}
 								sx={{
 									width: 200,
