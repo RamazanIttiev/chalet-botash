@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import { AppBar, Box, Link, Toolbar } from '@mui/material';
-import Scrollspy from 'react-scrollspy';
 
 import './header.css';
 
@@ -9,10 +8,6 @@ export const Header: FC = () => {
 		<AppBar position="fixed" enableColorOnDark>
 			<Toolbar sx={{ justifyContent: 'space-between' }}>
 				<Box
-					component={Scrollspy}
-					items={['promo', 'about', 'gallery', 'rooms', 'contacts']}
-					currentClassName="active-menu-tab"
-					offset={-100}
 					sx={{
 						m: 0,
 						p: 0,
