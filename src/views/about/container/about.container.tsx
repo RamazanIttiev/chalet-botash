@@ -1,11 +1,11 @@
 import React, { FC, useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid';
 import { About } from '../components/about';
 import { airtableBase } from '../../../app';
 import { AboutData } from '../about.model';
 import { mapAboutData } from '../../../services/mappers';
+import theme from '../../../theme';
 
 export const AboutContainer: FC = () => {
 	const [data, setData] = useState<AboutData[]>([]);
@@ -30,6 +30,10 @@ export const AboutContainer: FC = () => {
 				overflow: 'hidden',
 				backgroundColor: 'secondary.light',
 				p: '81px 0',
+
+				[theme.breakpoints.down('sm')]: {
+					p: '48px 0',
+				},
 			}}>
 			<Container
 				sx={{
@@ -37,16 +41,7 @@ export const AboutContainer: FC = () => {
 					position: 'relative',
 					backgroundColor: 'secondary.light',
 				}}>
-				<Grid
-					container
-					spacing={5}
-					sx={{
-						flexDirection: 'column',
-						flexWrap: 'nowrap',
-						alignItems: 'center',
-					}}>
-					<About data={data} />
-				</Grid>
+				<About data={data} />
 			</Container>
 		</Box>
 	);
