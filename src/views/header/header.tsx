@@ -2,10 +2,14 @@ import React, { FC } from 'react';
 import { AppBar, Grid, List, ListItem, Toolbar } from '@mui/material';
 
 import './theme/header.css';
-import { LinkStyled } from './theme/header.styled';
 import theme from '../../theme';
+import { LinkStyled } from './theme/header.styled';
 
-export const Header: FC = () => {
+interface HeaderProps {
+	activeTab: string;
+}
+
+export const Header: FC<HeaderProps> = ({ activeTab }) => {
 	return (
 		<AppBar
 			position="fixed"
@@ -46,19 +50,29 @@ export const Header: FC = () => {
 						},
 					}}>
 					<Grid item component={ListItem} sx={{ p: 0 }}>
-						<LinkStyled href="#promo">Logo</LinkStyled>
+						<LinkStyled activeTab={false} href="#promo">
+							Logo
+						</LinkStyled>
 					</Grid>
 					<ListItem sx={{ p: 0 }}>
-						<LinkStyled href="#about">О нас</LinkStyled>
+						<LinkStyled activeTab={activeTab === 'about'} href="#about">
+							О нас
+						</LinkStyled>
 					</ListItem>
 					<ListItem sx={{ p: 0 }}>
-						<LinkStyled href="#gallery">Галерея</LinkStyled>
+						<LinkStyled activeTab={activeTab === 'gallery'} href="#gallery">
+							Галерея
+						</LinkStyled>
 					</ListItem>
 					<ListItem sx={{ p: 0 }}>
-						<LinkStyled href="#rooms">Номера</LinkStyled>
+						<LinkStyled activeTab={activeTab === 'rooms'} href="#rooms">
+							Номера
+						</LinkStyled>
 					</ListItem>
 					<ListItem sx={{ p: 0 }}>
-						<LinkStyled href="#contacts">Контакты</LinkStyled>
+						<LinkStyled activeTab={activeTab === 'contacts'} href="#contacts">
+							Контакты
+						</LinkStyled>
 					</ListItem>
 				</Grid>
 				{/*<RadioGroup color={'secondary'} changeLang={changeLang} value={value} />*/}

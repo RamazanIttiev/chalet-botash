@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { FC } from 'react';
 import Typography from '../../components/Typography';
-import PromoLayout from './promo-layout';
+import { PromoLayout } from './promo-layout';
 import PromoBgr from './assets/PromoBgr.jpeg';
 
-export const Promo = () => {
+export const Promo: FC<{ handleOnView: (tabId: string) => void; activeTab: string }> = ({
+	activeTab,
+	handleOnView,
+}) => {
 	return (
 		<PromoLayout
+			activeTab={activeTab}
+			handleOnView={handleOnView}
 			sxBackground={{
 				backgroundImage: `url(${PromoBgr})`,
 				backgroundColor: '#7fc7d9', // Average color of the background image.

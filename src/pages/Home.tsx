@@ -1,4 +1,4 @@
-import React, { lazy } from 'react';
+import React, { FC, lazy } from 'react';
 import { Promo } from '../views/promo/promo';
 import { Box } from '@mui/system';
 
@@ -20,15 +20,18 @@ const Rooms = lazy(() =>
 	})),
 );
 
-function Index() {
-	return (
-		<Box component="main" sx={{ flexGrow: 1 }}>
-			<Promo />
-			<AboutContainer />
-			<GalleryContainer />
-			<Rooms />
-		</Box>
-	);
+interface HomeProps {
+	handleOnView: (tabId: string) => void;
+	activeTab: string;
 }
 
-export default Index;
+export const Home: FC<HomeProps> = ({ activeTab, handleOnView }) => {
+	return (
+		<Box component="main" sx={{ flexGrow: 1 }}>
+			<Promo activeTab={activeTab} handleOnView={handleOnView} />
+			<AboutContainer activeTab={activeTab} handleOnView={handleOnView} />
+			<GalleryContainer activeTab={activeTab} handleOnView={handleOnView} />
+			<Rooms activeTab={activeTab} handleOnView={handleOnView} />
+		</Box>
+	);
+};

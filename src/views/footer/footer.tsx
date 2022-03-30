@@ -1,32 +1,22 @@
-import React, { FC } from 'react';
+import React, { FC, useRef } from 'react';
 import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
-import { Instagram, Telegram, WhatsApp } from '@mui/icons-material';
-import Typography from '../components/Typography';
 import { Link } from '@mui/material';
+import Grid from '@mui/material/Grid';
+import { ActiveTabProps } from '../../models';
+import Typography from '../../components/Typography';
+import { Instagram, Telegram, WhatsApp } from '@mui/icons-material';
+import { useCustomIntersectionObserver } from '../../hooks/intersectionObserver';
 
-const iconStyle = {
-	width: 48,
-	height: 48,
-	display: 'flex',
-	justifyContent: 'center',
-	alignItems: 'center',
-	backgroundColor: 'warning.main',
-	color: 'black',
-	mr: 1,
-	'&:hover': {
-		backgroundColor: 'warning.dark',
-	},
-};
+import { iconStyle } from './theme/footer.styled';
 
-export const Footer: FC = () => {
+export const Footer: FC<ActiveTabProps> = ({ activeTab, handleOnView }) => {
+	const ref = useRef(null);
+
+	useCustomIntersectionObserver(ref, activeTab, handleOnView);
+
 	return (
-		<Typography
-			id="contacts"
-			component="footer"
-			marked="center"
-			sx={{ backgroundColor: 'secondary.light', flexShrink: 0 }}>
-			<Grid container>
+		<Typography component="footer" marked="center" sx={{ backgroundColor: 'secondary.light', flexShrink: 0 }}>
+			<Grid container id="contacts" ref={ref}>
 				<Grid item xs={12} sm={6} md={6} display={'flex'} alignItems={'center'}>
 					<Grid container spacing={4} sx={{ p: '24px 0', alignItems: 'center', flexDirection: 'column' }}>
 						<Grid item xs={12} sm={3} md={6}>

@@ -1,14 +1,17 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect, useRef, useState } from 'react';
+import theme from '../../../theme';
 import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
+import { AboutData } from '../about.model';
 import { About } from '../components/about';
 import { airtableBase } from '../../../app';
-import { AboutData } from '../about.model';
+import Container from '@mui/material/Container';
+import { ActiveTabProps } from '../../../models';
 import { mapAboutData } from '../../../services/mappers';
-import theme from '../../../theme';
+import { useCustomIntersectionObserver } from '../../../hooks/intersectionObserver';
 
-export const AboutContainer: FC = () => {
+export const AboutContainer: FC<ActiveTabProps> = ({ activeTab, handleOnView }) => {
 	const [data, setData] = useState<AboutData[]>([]);
+	const ref = useRef(null);
 
 	useEffect(() => {
 		airtableBase('About')
@@ -21,8 +24,11 @@ export const AboutContainer: FC = () => {
 			});
 	}, []);
 
+	useCustomIntersectionObserver(ref, activeTab, handleOnView);
+
 	return (
 		<Box
+			ref={ref}
 			id="about"
 			component="section"
 			sx={{

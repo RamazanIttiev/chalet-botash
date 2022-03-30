@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { Gallery } from '../components/gallery';
 import { airtableBase } from '../../../app';
 import { mapGalleryData } from '../../../services/mappers';
 import { GalleryData } from '../galary.model';
 
-export const GalleryContainer = () => {
+export const GalleryContainer: FC<{ handleOnView: (tabId: string) => void; activeTab: string }> = ({
+	activeTab,
+	handleOnView,
+}) => {
 	const imagesToShow = 6;
 	const [data, setData] = useState<GalleryData[]>([]);
 	const [currentIndex, setCurrentIndex] = useState(0);
@@ -33,6 +36,8 @@ export const GalleryContainer = () => {
 	const galleryDataSliced = data.slice(0, imagesToShow);
 	return (
 		<Gallery
+			activeTab={activeTab}
+			handleOnView={handleOnView}
 			isModalOpen={isModalOpen}
 			toggleModal={toggleModal}
 			currentIndex={currentIndex}

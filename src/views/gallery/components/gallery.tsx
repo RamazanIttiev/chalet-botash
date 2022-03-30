@@ -1,14 +1,16 @@
-import React, { FC } from 'react';
+import React, { FC, useRef } from 'react';
 import { Box } from '@mui/system';
 import { Modal } from '@mui/material';
 import { GalleryData } from '../galary.model';
 import Container from '@mui/material/Container';
+import { ActiveTabProps } from '../../../models';
 import { GalleryCarousel } from './gallery-carousel';
 import Typography from '../../../components/Typography';
+import { useCustomIntersectionObserver } from '../../../hooks/intersectionObserver';
 
 import { ImageBackdrop, ImageIconButton } from '../theme/styled';
 
-interface GalleryProps {
+interface GalleryProps extends ActiveTabProps {
 	currentIndex: number;
 	isModalOpen: boolean;
 	gallery: GalleryData[];
@@ -16,9 +18,21 @@ interface GalleryProps {
 	showModalImage: (imageId: number) => void;
 }
 
-export const Gallery: FC<GalleryProps> = ({ currentIndex, gallery, toggleModal, isModalOpen, showModalImage }) => {
+export const Gallery: FC<GalleryProps> = ({
+	currentIndex,
+	gallery,
+	toggleModal,
+	isModalOpen,
+	showModalImage,
+	handleOnView,
+	activeTab,
+}) => {
+	const ref = useRef(null);
+
+	useCustomIntersectionObserver(ref, activeTab, handleOnView);
+
 	return (
-		<Container id="gallery" component="section" sx={{ p: '64px 0' }}>
+		<Container ref={ref} id="gallery" component="section" sx={{ p: '64px 0' }}>
 			<Typography variant="h4" align="center" component="h2">
 				ФОТОГРАФИИ ГОСТЕВОГО ДОМА &quot;CHALET BOTASH&quot;
 			</Typography>

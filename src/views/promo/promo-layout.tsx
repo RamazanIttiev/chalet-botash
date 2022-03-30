@@ -1,9 +1,11 @@
-import React from 'react';
-import { styled, Theme } from '@mui/material/styles';
-import { SxProps } from '@mui/system';
-import Container from '@mui/material/Container';
+import React, { FC, useRef } from 'react';
 import Box from '@mui/material/Box';
+import { SxProps } from '@mui/system';
+import { ActiveTabProps } from '../../models';
+import Container from '@mui/material/Container';
 import { ArrowDownward } from '@mui/icons-material';
+import { styled, Theme } from '@mui/material/styles';
+import { useCustomIntersectionObserver } from '../../hooks/intersectionObserver';
 
 const PromoLayoutRoot = styled('section')(({ theme }: { theme: Theme }) => ({
 	color: theme.palette.common.white,
@@ -29,15 +31,17 @@ const Background = styled(Box)({
 	zIndex: -2,
 });
 
-interface PromoLayoutProps {
+interface PromoLayoutProps extends ActiveTabProps {
 	sxBackground: SxProps<Theme>;
 }
 
-export default function PromoLayout(props: React.HTMLAttributes<HTMLDivElement> & PromoLayoutProps) {
-	const { sxBackground, children } = props;
+export const PromoLayout: FC<PromoLayoutProps> = ({ activeTab, handleOnView, sxBackground, children }) => {
+	const ref = useRef(null);
+
+	useCustomIntersectionObserver(ref, activeTab, handleOnView);
 
 	return (
-		<PromoLayoutRoot id="promo">
+		<PromoLayoutRoot ref={ref} id="promo">
 			<Container
 				sx={{
 					mt: 3,
@@ -66,4 +70,4 @@ export default function PromoLayout(props: React.HTMLAttributes<HTMLDivElement> 
 			</Container>
 		</PromoLayoutRoot>
 	);
-}
+};

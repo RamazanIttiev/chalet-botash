@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { FC, useEffect, useRef, useState } from 'react';
 import { RoomCard } from './room-card';
-import { Box, Container, Grid } from '@mui/material';
-import Typography from '../../components/Typography';
 import { airtableBase } from '../../app';
 import { RoomsData } from './rooms.model';
+import { ActiveTabProps } from '../../models';
+import { Box, Container, Grid } from '@mui/material';
+import Typography from '../../components/Typography';
 import { mapRoomsData } from '../../services/mappers';
+import { useCustomIntersectionObserver } from '../../hooks/intersectionObserver';
 
-export const Rooms = () => {
+export const Rooms: FC<ActiveTabProps> = ({ handleOnView, activeTab }) => {
 	const [data, setData] = useState<RoomsData[]>([]);
+	const ref = useRef(null);
 
 	useEffect(() => {
 		airtableBase('Rooms')
@@ -20,8 +23,11 @@ export const Rooms = () => {
 			});
 	}, []);
 
+	useCustomIntersectionObserver(ref, activeTab, handleOnView);
+
 	return (
 		<Box
+			ref={ref}
 			id="rooms"
 			component="section"
 			sx={{
