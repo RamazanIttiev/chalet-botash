@@ -44,12 +44,6 @@ export const Footer: FC<ActiveTabProps> = ({ activeTab, handleOnView }) => {
 								<Telegram />
 							</Box>
 						</Grid>
-						{/*<Grid item xs={12} sm={3} md={6}>*/}
-						{/*	<Typography variant="h6" marked="center" textAlign="center" gutterBottom>*/}
-						{/*		Language*/}
-						{/*	</Typography>*/}
-						{/*	<RadioGroup value={value} changeLang={changeLang} color={'primary'} />*/}
-						{/*</Grid>*/}
 					</Grid>
 				</Grid>
 				<Grid item xs={12} sm={6} md={6}>

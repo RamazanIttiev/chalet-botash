@@ -11,13 +11,6 @@ export const airtableBase = new Airtable({
 }).base('appODUEXCW5oqxyCY');
 
 const App = () => {
-	// const [value, setValue] = useState(localStorage.getItem('i18nextLng'));
-	//
-	// const changeLang = (language: string) => {
-	// 	setValue(language);
-	// 	changeLanguage(language);
-	// };
-
 	const [activeTab, setActiveTab] = useState('');
 
 	const handleOnView = (tabId: string) => {
