@@ -5,9 +5,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper';
 import { GalleryData } from '../galary.model';
 
-import 'lazysizes';
-import 'lazysizes/plugins/parent-fit/ls.parent-fit';
-
 interface ImageCarouselProps {
 	currentIndex: number;
 	images: GalleryData[];
@@ -34,7 +31,6 @@ export const GalleryCarousel: FC<ImageCarouselProps> = ({ currentIndex, images }
 						<Box
 							component={'img'}
 							data-src={image}
-							className="lazyload"
 							sx={{
 								height: '100%',
 							}}
