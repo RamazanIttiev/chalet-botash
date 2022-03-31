@@ -2,7 +2,7 @@ import { MutableRefObject } from 'react';
 import { useIntersectionObserver } from '@asyarb/use-intersection-observer';
 
 export const intersectionOptions = {
-	rootMargin: `0px`,
+	rootMargin: +window.screenY <= 768 ? `100px` : '0px',
 	threshold: 0.55,
 	triggerOnce: false,
 };

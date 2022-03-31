@@ -35,11 +35,11 @@ export const Rooms: FC<ActiveTabProps> = ({ handleOnView, activeTab }) => {
 				backgroundColor: 'secondary.light',
 				p: '64px 0',
 			}}>
+			<Typography variant="h4" align="center" component="h2" mb={8}>
+				Наши номера
+			</Typography>
 			<Container sx={{ backgroundColor: 'secondary.light' }}>
-				<Typography variant="h4" align="center" component="h2" mb={8}>
-					Наши номера
-				</Typography>
-				<Grid container sx={{ justifyContent: 'center' }}>
+				<Grid container spacing={8} sx={{ justifyContent: 'center' }}>
 					{data.map(({ title, description, image, id, price }) => {
 						return (
 							<Grid
