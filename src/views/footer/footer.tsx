@@ -47,18 +47,6 @@ export const Footer: FC<ActiveTabProps> = ({ activeTab, handleOnView }) => {
 					</Grid>
 				</Grid>
 				<Grid item xs={12} sm={6} md={6}>
-					{/*<Box sx={{ position: 'relative', overflow: 'hidden' }}>*/}
-					{/*	<Link*/}
-					{/*		href="https://yandex.ru/maps?utm_medium=mapframe&utm_source=maps"*/}
-					{/*		sx={{ color: '#eee', fontSize: '12px', position: 'absolute', top: 0 }}>*/}
-					{/*		Яндекс Карты*/}
-					{/*	</Link>*/}
-					{/*	<Link*/}
-					{/*		href="https://yandex.ru/maps/?ll=42.683177%2C43.274920&mode=routes&rtext=~43.272964%2C42.682418&rtt=auto&ruri=~&utm_medium=mapframe&utm_source=maps&z=16.54"*/}
-					{/*		sx={{ color: '#eee', fontSize: '12px', position: 'absolute', top: 14 }}>*/}
-					{/*		Баксанское ущелье — Яндекс Карты*/}
-					{/*	</Link>*/}
-					{/*</Box>*/}
 					<iframe
 						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2904.9938868203412!2d42.68075131539982!3d43.27250388498218!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xfa9555d3e71ae999!2zNDPCsDE2JzIxLjAiTiA0MsKwNDAnNTguNiJF!5e0!3m2!1sru!2sru!4v1647419800631!5m2!1sru!2sru"
 						width="100%"
