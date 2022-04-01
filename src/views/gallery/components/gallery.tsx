@@ -39,6 +39,7 @@ export const Gallery: FC<GalleryProps> = ({
 			<Box sx={{ mt: 8, display: 'flex', flexWrap: 'wrap' }}>
 				{gallery.map(({ id, image }, index) => (
 					<ImageIconButton
+						aria-label={`Gallery_image_${id}`}
 						key={id}
 						onClick={() => showModalImage(index)}
 						style={{

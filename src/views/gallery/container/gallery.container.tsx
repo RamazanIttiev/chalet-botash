@@ -14,15 +14,17 @@ export const GalleryContainer: FC<{ handleOnView: (tabId: string) => void; activ
 	const [isModalOpen, setIsModalOpen] = useState(false);
 
 	useEffect(() => {
-		airtableBase('Gallery')
-			.select({
-				view: 'Grid view',
-			})
-			.eachPage(records => {
-				// @ts-ignore
-				return setData(mapGalleryData(records));
-			});
-	}, []);
+		if (activeTab === 'gallery') {
+			airtableBase('Gallery')
+				.select({
+					view: 'Grid view',
+				})
+				.eachPage(records => {
+					// @ts-ignore
+					return setData(mapGalleryData(records));
+				});
+		}
+	}, [activeTab]);
 
 	const toggleModal = () => {
 		setIsModalOpen(!isModalOpen);

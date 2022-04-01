@@ -32,6 +32,7 @@ export const Footer: FC<ActiveTabProps> = ({ activeTab, handleOnView }) => {
 						<Grid item xs={12} sm={3} md={6} display={'flex'} justifyContent={'center'}>
 							<Box component="a" target={'_blank'} href="https://wa.me/89214425044" sx={iconStyle}>
 								<WhatsApp />
+								<span style={{ color: 'transparent', position: 'absolute' }}>WhatsApp</span>
 							</Box>
 							<Box
 								component="a"
@@ -39,9 +40,11 @@ export const Footer: FC<ActiveTabProps> = ({ activeTab, handleOnView }) => {
 								href="https://instagram.com/ibra_botashev?utm_medium=copy_link"
 								sx={iconStyle}>
 								<Instagram />
+								<span style={{ color: 'transparent', position: 'absolute' }}>Instagram</span>
 							</Box>
 							<Box component="a" target={'_blank'} href="https://t.me/Ibotashev" sx={iconStyle}>
 								<Telegram />
+								<span style={{ color: 'transparent', position: 'absolute' }}>Telegram</span>
 							</Box>
 						</Grid>
 					</Grid>
@@ -54,6 +57,7 @@ export const Footer: FC<ActiveTabProps> = ({ activeTab, handleOnView }) => {
 						style={{ border: 0 }}
 						allowFullScreen={true}
 						loading="lazy"
+						title={'Chalet_Botash_location'}
 					/>
 				</Grid>
 			</Grid>

@@ -12,7 +12,7 @@ export const RoomCard: FC<RoomsData> = ({ title, description, image, price }) =>
 				position: 'relative',
 			}}>
 			<CardActionArea>
-				<CardMedia component="img" image={image} height={400} />
+				<CardMedia component="img" alt={title} image={image} height={400} />
 				<CardContent>
 					<Typography gutterBottom variant="h5" component="div">
 						{title}

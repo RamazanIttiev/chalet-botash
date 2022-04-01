@@ -17,6 +17,7 @@ export const About: FC<AboutProps> = ({ data }) => {
 						<Grid
 							container
 							sx={{
+								alignItems: 'end',
 								justifyContent: 'space-between',
 								flexDirection: id % 2 === 0 ? 'row' : 'row-reverse',
 							}}>

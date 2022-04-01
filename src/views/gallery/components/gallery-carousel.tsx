@@ -30,7 +30,7 @@ export const GalleryCarousel: FC<ImageCarouselProps> = ({ currentIndex, images }
 					<SwiperSlide>
 						<Box
 							component={'img'}
-							data-src={image}
+							src={image}
 							sx={{
 								height: '100%',
 							}}
