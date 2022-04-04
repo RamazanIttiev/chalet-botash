@@ -29,7 +29,6 @@ export const About: FC<AboutProps> = ({ data }) => {
 									sx={{
 										width: 200,
 										height: 200,
-										border: '1px solid',
 										borderRadius: '100%',
 										display: 'block',
 

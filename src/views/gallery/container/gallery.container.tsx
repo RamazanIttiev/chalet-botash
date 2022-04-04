@@ -36,6 +36,7 @@ export const GalleryContainer: FC<{ handleOnView: (tabId: string) => void; activ
 	};
 
 	const galleryDataSliced = data.slice(0, imagesToShow);
+
 	return (
 		<Gallery
 			activeTab={activeTab}
@@ -43,7 +44,8 @@ export const GalleryContainer: FC<{ handleOnView: (tabId: string) => void; activ
 			isModalOpen={isModalOpen}
 			toggleModal={toggleModal}
 			currentIndex={currentIndex}
-			gallery={galleryDataSliced}
+			sliderImages={data}
+			images={galleryDataSliced}
 			showModalImage={showModalImage}
 		/>
 	);

@@ -13,14 +13,16 @@ import { ImageBackdrop, ImageIconButton } from '../theme/styled';
 interface GalleryProps extends ActiveTabProps {
 	currentIndex: number;
 	isModalOpen: boolean;
-	gallery: GalleryData[];
+	images: GalleryData[];
+	sliderImages: GalleryData[];
 	toggleModal: () => void;
 	showModalImage: (imageId: number) => void;
 }
 
 export const Gallery: FC<GalleryProps> = ({
 	currentIndex,
-	gallery,
+	images,
+	sliderImages,
 	toggleModal,
 	isModalOpen,
 	showModalImage,
@@ -37,7 +39,7 @@ export const Gallery: FC<GalleryProps> = ({
 				ФОТОГРАФИИ ГОСТЕВОГО ДОМА &quot;CHALET BOTASH&quot;
 			</Typography>
 			<Box sx={{ mt: 8, display: 'flex', flexWrap: 'wrap' }}>
-				{gallery.map(({ id, image }, index) => (
+				{images.map(({ id, image }, index) => (
 					<ImageIconButton
 						aria-label={`Gallery_image_${id}`}
 						key={id}
@@ -87,7 +89,7 @@ export const Gallery: FC<GalleryProps> = ({
 						margin: '0 auto',
 						top: '15%',
 					}}>
-					<GalleryCarousel images={gallery} currentIndex={currentIndex} />
+					<GalleryCarousel images={sliderImages} currentIndex={currentIndex} />
 				</Modal>
 			</Box>
 		</Container>

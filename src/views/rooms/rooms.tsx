@@ -35,7 +35,7 @@ export const Rooms: FC<ActiveTabProps> = ({ handleOnView, activeTab }) => {
 			sx={{
 				overflow: 'hidden',
 				backgroundColor: 'secondary.light',
-				p: '64px 0',
+				p: '124px 0',
 			}}>
 			<Typography variant="h4" align="center" component="h2" mb={8}>
 				Наши номера
