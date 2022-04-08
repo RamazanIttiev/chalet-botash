@@ -5,9 +5,9 @@ import { AboutData } from '../about.model';
 import { About } from '../components/about';
 import { airtableBase } from '../../../app';
 import Container from '@mui/material/Container';
-import { ActiveTabProps } from '../../../models';
 import { mapAboutData } from '../../../services/mappers';
 import { useCustomIntersectionObserver } from '../../../hooks/intersectionObserver';
+import { ActiveTabProps } from '../../../models/active-tab.model';
 
 export const AboutContainer: FC<ActiveTabProps> = ({ activeTab, handleOnView }) => {
 	const [data, setData] = useState<AboutData[]>([]);

@@ -1,7 +1,7 @@
 import React, { FC, useRef } from 'react';
 import Box from '@mui/material/Box';
 import { SxProps } from '@mui/system';
-import { ActiveTabProps } from '../../models';
+import { ActiveTabProps } from '../../models/active-tab.model';
 import Container from '@mui/material/Container';
 import { ArrowDownward } from '@mui/icons-material';
 import { styled, Theme } from '@mui/material/styles';

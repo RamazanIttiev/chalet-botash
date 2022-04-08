@@ -3,12 +3,12 @@ import { Box } from '@mui/system';
 import { Modal } from '@mui/material';
 import { GalleryData } from '../galary.model';
 import Container from '@mui/material/Container';
-import { ActiveTabProps } from '../../../models';
+import { ActiveTabProps } from '../../../models/active-tab.model';
 import { GalleryCarousel } from './gallery-carousel';
 import Typography from '../../../components/Typography';
 import { useCustomIntersectionObserver } from '../../../hooks/intersectionObserver';
 
-import { ImageBackdrop, ImageIconButton } from '../theme/styled';
+import { ImageBackdrop, ImageIconButton } from '../theme/gallery.styled';
 
 interface GalleryProps extends ActiveTabProps {
 	currentIndex: number;
@@ -36,7 +36,7 @@ export const Gallery: FC<GalleryProps> = ({
 	return (
 		<Container ref={ref} id="gallery" component="section" sx={{ p: '64px 0' }}>
 			<Typography variant="h4" align="center" component="h2">
-				ФОТОГРАФИИ ГОСТЕВОГО ДОМА &quot;CHALET BOTASH&quot;
+				Галерея
 			</Typography>
 			<Box sx={{ mt: 8, display: 'flex', flexWrap: 'wrap' }}>
 				{images.map(({ id, image }, index) => (

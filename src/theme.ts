@@ -36,6 +36,15 @@ const rawTheme = createTheme({
 		fontWeightRegular: 400, // Work Sans
 		fontWeightMedium: 700, // Roboto Condensed
 	},
+	breakpoints: {
+		values: {
+			xs: 0,
+			sm: 480,
+			md: 768,
+			lg: 1024,
+			xl: 1280,
+		},
+	},
 });
 
 const fontHeader = {

@@ -2,8 +2,8 @@ import React, { FC, useRef } from 'react';
 import Box from '@mui/material/Box';
 import { Link } from '@mui/material';
 import Grid from '@mui/material/Grid';
-import { ActiveTabProps } from '../../models';
 import Typography from '../../components/Typography';
+import { ActiveTabProps } from '../../models/active-tab.model';
 import { Instagram, Telegram, WhatsApp } from '@mui/icons-material';
 import { useCustomIntersectionObserver } from '../../hooks/intersectionObserver';
 

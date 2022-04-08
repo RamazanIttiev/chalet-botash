@@ -2,7 +2,7 @@ import React, { FC, useEffect, useRef, useState } from 'react';
 import { RoomCard } from './room-card';
 import { airtableBase } from '../../app';
 import { RoomsData } from './rooms.model';
-import { ActiveTabProps } from '../../models';
+import { ActiveTabProps } from '../../models/active-tab.model';
 import { Box, Container, Grid } from '@mui/material';
 import Typography from '../../components/Typography';
 import { mapRoomsData } from '../../services/mappers';
