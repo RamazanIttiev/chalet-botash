@@ -39,8 +39,8 @@ const rawTheme = createTheme({
 	breakpoints: {
 		values: {
 			xs: 0,
-			sm: 480,
-			md: 768,
+			sm: 481,
+			md: 769,
 			lg: 1024,
 			xl: 1280,
 		},

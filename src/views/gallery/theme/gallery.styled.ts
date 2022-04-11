@@ -3,6 +3,7 @@ import { ButtonBase } from '@mui/material';
 import { Theme } from '@mui/system';
 
 export const ImageBackdrop = styled('div')(() => ({
+	content: "''",
 	position: 'absolute',
 	left: 0,
 	right: 0,
@@ -19,7 +20,7 @@ export const ImageIconButton = styled(ButtonBase)(({ theme }: { theme: Theme }) 
 	borderRadius: 0,
 	height: '40vh',
 	[theme.breakpoints.down('md')]: {
-		height: 100,
+		height: '300px',
 	},
 	'&:hover': {
 		zIndex: 1,
