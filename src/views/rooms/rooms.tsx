@@ -13,7 +13,7 @@ export const Rooms: FC<ActiveTabProps> = ({ handleOnView, activeTab }) => {
 	const ref = useRef(null);
 
 	useEffect(() => {
-		if (activeTab === 'rooms') {
+		if (activeTab === 'rooms' && data.length === 0) {
 			airtableBase('Rooms')
 				.select({
 					view: 'Grid view',
@@ -23,7 +23,7 @@ export const Rooms: FC<ActiveTabProps> = ({ handleOnView, activeTab }) => {
 					return setData(mapRoomsData(records));
 				});
 		}
-	}, [activeTab]);
+	}, [activeTab, data.length]);
 
 	useCustomIntersectionObserver(ref, activeTab, handleOnView);
 

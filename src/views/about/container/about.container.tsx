@@ -14,7 +14,7 @@ export const AboutContainer: FC<ActiveTabProps> = ({ activeTab, handleOnView }) 
 	const ref = useRef(null);
 
 	useEffect(() => {
-		if (activeTab === 'about') {
+		if (activeTab === 'about' && data.length === 0) {
 			airtableBase('About')
 				.select({
 					view: 'Grid view',
@@ -24,7 +24,7 @@ export const AboutContainer: FC<ActiveTabProps> = ({ activeTab, handleOnView }) 
 					return setData(mapAboutData(records));
 				});
 		}
-	}, [activeTab]);
+	}, [activeTab, data.length]);
 
 	useCustomIntersectionObserver(ref, activeTab, handleOnView);
 

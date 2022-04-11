@@ -14,7 +14,7 @@ export const GalleryContainer: FC<{ handleOnView: (tabId: string) => void; activ
 	const [isModalOpen, setIsModalOpen] = useState(false);
 
 	useEffect(() => {
-		if (activeTab === 'gallery') {
+		if (activeTab === 'gallery' && data.length === 0) {
 			airtableBase('Gallery')
 				.select({
 					view: 'Grid view',
@@ -24,7 +24,7 @@ export const GalleryContainer: FC<{ handleOnView: (tabId: string) => void; activ
 					return setData(mapGalleryData(records));
 				});
 		}
-	}, [activeTab]);
+	}, [activeTab, data.length]);
 
 	const toggleModal = () => {
 		setIsModalOpen(!isModalOpen);
