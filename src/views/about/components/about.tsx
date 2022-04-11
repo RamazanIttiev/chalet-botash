@@ -10,54 +10,57 @@ interface AboutProps {
 }
 
 export const About: FC<AboutProps> = ({ data }) => {
-	console.log(data.length);
 	return (
 		<Grid container spacing={8} sx={{ justifyContent: 'center' }}>
 			{data.length === 0
 				? Array.from([1, 2, 3]).map(id => <AboutSkeleton id={id} />)
 				: data.map(({ title, image, text, id }) => {
 						return (
-							<Grid item key={id} xs={12} md={10}>
-								<Grid
-									container
+							<Grid
+								item
+								key={id}
+								xs={12}
+								md={12}
+								sx={{
+									display: 'flex',
+									alignItems: 'end',
+									justifyContent: 'space-between',
+									flexDirection: id % 2 === 0 ? 'row' : 'row-reverse',
+								}}>
+								<Box
+									component={'img'}
+									src={image}
+									alt={title}
+									width={200}
+									height={200}
 									sx={{
-										alignItems: 'end',
-										justifyContent: 'space-between',
-										flexDirection: id % 2 === 0 ? 'row' : 'row-reverse',
-									}}>
-									<Grid item sm={3}>
-										<Box
-											component={'img'}
-											src={image}
-											alt={title}
-											sx={{
-												width: 200,
-												height: 200,
-												borderRadius: '100%',
-												display: 'block',
+										borderRadius: '100%',
+										margin: id % 2 === 0 ? '0 16px 0 0' : '0 0 0 16px',
+										display: 'block',
 
-												[theme.breakpoints.down('sm')]: {
-													display: 'none',
-												},
-											}}
-										/>
-									</Grid>
-									<Grid item sm={8}>
-										<Box
-											sx={{
-												display: 'flex',
-												flexDirection: 'column',
-												textAlign: 'center',
-											}}>
-											<Typography variant="h6" sx={{ my: 5 }}>
-												{title}
-											</Typography>
-											<Typography variant="h5" component={'p'} fontSize={16} lineHeight={1.6}>
-												{text}
-											</Typography>
-										</Box>
-									</Grid>
-								</Grid>
+										[theme.breakpoints.down('sm')]: {
+											display: 'none',
+										},
+									}}
+								/>
+								<Box
+									sx={{
+										maxWidth: '70%',
+										display: 'flex',
+										flexDirection: 'column',
+										textAlign: 'center',
+
+										[theme.breakpoints.down('sm')]: {
+											maxWidth: '100%',
+										},
+									}}>
+									<Typography variant="h6" sx={{ my: 5 }}>
+										{title}
+									</Typography>
+									<Typography variant="h5" component={'p'} fontSize={16} lineHeight={1.6}>
+										{text}
+									</Typography>
+								</Box>
 							</Grid>
 						);
 				  })}

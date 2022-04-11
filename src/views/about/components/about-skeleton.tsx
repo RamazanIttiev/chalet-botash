@@ -8,7 +8,7 @@ interface AboutSkeletonProps {
 
 export const AboutSkeleton: FC<AboutSkeletonProps> = ({ id }) => {
 	return (
-		<Grid item xs={12} md={10}>
+		<Grid item xs={12} md={11}>
 			<Grid
 				container
 				sx={{
