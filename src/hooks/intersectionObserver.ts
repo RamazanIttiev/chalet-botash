@@ -3,7 +3,7 @@ import { useIntersectionObserver } from '@asyarb/use-intersection-observer';
 
 export const intersectionOptions = {
 	rootMargin: +window.screenY <= 768 ? `100px` : '0px',
-	threshold: 0.55,
+	threshold: +window.screenY <= 768 ? 0.5 : 0.75,
 	triggerOnce: false,
 };
 
