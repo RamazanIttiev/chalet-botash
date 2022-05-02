@@ -13,11 +13,10 @@ export const Promo: FC<{ handleOnView: (tabId: string) => void; activeTab: strin
 			handleOnView={handleOnView}
 			sxBackground={{
 				backgroundImage: `url(${PromoBgr})`,
-				backgroundColor: '#7fc7d9', // Average color of the background image.
 				backgroundPosition: 'center',
 			}}>
 			{/* Increase the network loading priority of the background image. */}
-			<img style={{ display: 'none' }} src={PromoBgr} alt="increase priority" />
+			{/*<img style={{ display: 'none' }} src={PromoBgr} alt="increase priority" />*/}
 			<Typography color="inherit" align="center" component="h1" variant="h2" marked="center">
 				Гостевой дом Chalet Botash
 			</Typography>

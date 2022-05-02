@@ -11,32 +11,33 @@ export const LinkStyled = styled(Link).attrs({
 	color: 'inherit',
 })<LinkStyleProps>(props => {
 	return {
-		padding: '20px 0',
+		padding: '10px 0',
 		fontSize: 16,
 		letterSpacing: 4,
-		position: 'relative',
 		cursor: 'pointer',
+		position: 'relative',
+		backgroundImage: 'linear-gradient(transparent 0%,transparent 90%,#fff7ed 90%,#fff7ed 100%)',
+		backgroundRepeat: 'no-repeat',
+		backgroundSize: '0% 100%',
+		backgroundPositionX: 'right',
+		transition: 'background-size 300ms',
 
-		'&:hover:before': {
-			content: '""',
-			width: '90%',
-			height: 3,
-			position: 'absolute',
-			left: '50%',
-			bottom: 0,
-			background: '#fff',
-			transform: 'translate(-50%)',
+		'&:hover': {
+			backgroundSize: '100% 100%',
+			backgroundPositionX: 'left',
 		},
 
 		'&::after': {
-			content: props.activeTab ? '""' : 'unset',
-			width: '90%',
-			height: 3,
+			content: '""',
+			width: props.activeTab ? '100%' : 0,
+			height: '5px',
+			backgroundColor: '#fff7ed',
+			backgroundRepeat: 'no-repeat',
+			backgroundSize: '0% 100%',
+			backgroundPositionX: 'right',
 			position: 'absolute',
-			left: '50%',
 			bottom: 0,
-			background: '#fff',
-			transform: 'translate(-50%)',
+			right: 0,
 		},
 	};
 });

@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import { AppBar, Grid, List, ListItem, Toolbar } from '@mui/material';
 
-import './theme/header.css';
 import theme from '../../theme';
 import { LinkStyled } from './theme/header.styled';
 
