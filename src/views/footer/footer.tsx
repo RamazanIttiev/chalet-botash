@@ -30,7 +30,7 @@ export const Footer: FC<ActiveTabProps> = ({ activeTab, handleOnView }) => {
 							</Link>
 						</Grid>
 						<Grid item xs={12} sm={3} md={6} display={'flex'} justifyContent={'center'}>
-							<Box component="a" target={'_blank'} href="https://wa.me/89214425044" sx={iconStyle}>
+							<Box component="a" target={'_blank'} href="https://wa.me/+79214425044" sx={iconStyle}>
 								<WhatsApp />
 								<span style={{ color: 'transparent', position: 'absolute' }}>WhatsApp</span>
 							</Box>

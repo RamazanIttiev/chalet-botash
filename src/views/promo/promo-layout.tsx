@@ -12,24 +12,33 @@ const PromoLayoutRoot = styled('section')(({ theme }: { theme: Theme }) => ({
 	position: 'relative',
 	display: 'flex',
 	alignItems: 'center',
+	scrollMarginTop: '64px',
+
 	[theme.breakpoints.up('sm')]: {
 		height: '80vh',
 		minHeight: 500,
 		maxHeight: 1300,
 	},
+
+	[theme.breakpoints.down('sm')]: {
+		padding: '48px 0',
+	},
 }));
 
-const Background = styled(Box)({
+const Background = styled(Box)(({ theme }: { theme: Theme }) => ({
 	position: 'absolute',
 	left: 0,
 	right: 0,
 	top: 0,
 	bottom: 0,
+	zIndex: -2,
 	backgroundSize: 'cover',
 	backgroundRepeat: 'no-repeat',
 	backgroundAttachment: 'fixed',
-	zIndex: -2,
-});
+	[theme.breakpoints.down('sm')]: {
+		backgroundAttachment: 'initial',
+	},
+}));
 
 interface PromoLayoutProps extends ActiveTabProps {
 	sxBackground: SxProps<Theme>;

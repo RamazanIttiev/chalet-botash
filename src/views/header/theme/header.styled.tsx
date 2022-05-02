@@ -28,7 +28,7 @@ export const LinkStyled = styled(Link).attrs({
 		},
 
 		'&::after': {
-			content: '""',
+			content: props.activeTab ? '""' : 'unset',
 			width: props.activeTab ? '100%' : 0,
 			height: '5px',
 			backgroundColor: '#fff7ed',

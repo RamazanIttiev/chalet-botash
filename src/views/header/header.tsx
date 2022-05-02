@@ -15,7 +15,6 @@ export const Header: FC<HeaderProps> = ({ activeTab }) => {
 			sx={{
 				position: 'sticky',
 				top: 0,
-				height: '64px',
 				[theme.breakpoints.down('sm')]: {
 					position: 'unset',
 				},
@@ -23,9 +22,12 @@ export const Header: FC<HeaderProps> = ({ activeTab }) => {
 			<Toolbar>
 				<nav style={{ justifyContent: 'space-between', width: '100%' }}>
 					<LinkStyled
+						activeTab={false}
 						sx={{
 							display: 'none',
-
+							'&:hover': {
+								backgroundSize: '0 !important',
+							},
 							[theme.breakpoints.down('sm')]: {
 								width: '100%',
 								height: '100%',
@@ -52,7 +54,14 @@ export const Header: FC<HeaderProps> = ({ activeTab }) => {
 							},
 						}}>
 						<Grid item component={ListItem} sx={{ p: 0 }}>
-							<LinkStyled activeTab={false} href="#promo">
+							<LinkStyled
+								sx={{
+									'&:hover': {
+										backgroundSize: '0 !important',
+									},
+								}}
+								activeTab={false}
+								href="#promo">
 								Logo
 							</LinkStyled>
 						</Grid>
