@@ -37,12 +37,12 @@ export const Gallery: FC<GalleryProps> = ({
 	useCustomIntersectionObserver(ref, activeTab, handleOnView);
 
 	return (
-		<Container ref={ref} id="gallery" component="section" sx={{ p: '64px 0' }}>
-			<Typography variant="h4" align="center" component="h2">
+		<Container id="gallery" ref={ref} component="section" sx={{ p: '64px 0', scrollMarginTop: '64px' }}>
+			<Typography variant="h4" align="center" component="h2" mb={8}>
 				Галерея
 			</Typography>
 			{screen.width && screen.width >= 480 ? (
-				<Grid container spacing={1} sx={{ mt: 8 }}>
+				<Grid container spacing={1}>
 					{images.map(({ id, image }, index) => (
 						<Grid item md={4} sm={4} xs={12}>
 							<ImageIconButton

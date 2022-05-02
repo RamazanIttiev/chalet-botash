@@ -33,9 +33,9 @@ export const Rooms: FC<ActiveTabProps> = ({ handleOnView, activeTab }) => {
 			id="rooms"
 			component="section"
 			sx={{
-				overflow: 'hidden',
+				scrollMarginTop: '64px',
 				backgroundColor: 'secondary.light',
-				p: '124px 0',
+				p: '84px 0',
 			}}>
 			<Typography variant="h4" align="center" component="h2" mb={8}>
 				Наши номера

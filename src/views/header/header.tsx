@@ -11,9 +11,11 @@ interface HeaderProps {
 export const Header: FC<HeaderProps> = ({ activeTab }) => {
 	return (
 		<AppBar
-			position="fixed"
 			enableColorOnDark
 			sx={{
+				position: 'sticky',
+				top: 0,
+				height: '64px',
 				[theme.breakpoints.down('sm')]: {
 					position: 'unset',
 				},

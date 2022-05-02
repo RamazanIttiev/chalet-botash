@@ -8,6 +8,7 @@ import Container from '@mui/material/Container';
 import { mapAboutData } from '../../../services/mappers';
 import { useCustomIntersectionObserver } from '../../../hooks/intersectionObserver';
 import { ActiveTabProps } from '../../../models/active-tab.model';
+import Typography from '../../../components/Typography';
 
 export const AboutContainer: FC<ActiveTabProps> = ({ activeTab, handleOnView }) => {
 	const [data, setData] = useState<AboutData[]>([]);
@@ -35,7 +36,8 @@ export const AboutContainer: FC<ActiveTabProps> = ({ activeTab, handleOnView }) 
 			component="section"
 			sx={{
 				display: 'flex',
-				overflow: 'hidden',
+				flexWrap: 'wrap',
+				scrollMarginTop: '64px',
 				backgroundColor: 'secondary.light',
 				p: '81px 0',
 
@@ -43,6 +45,9 @@ export const AboutContainer: FC<ActiveTabProps> = ({ activeTab, handleOnView }) 
 					p: '48px 0',
 				},
 			}}>
+			<Typography width="100%" variant="h4" align="center" component="h2" mb={8}>
+				О нас
+			</Typography>
 			<Container
 				sx={{
 					display: 'flex',
