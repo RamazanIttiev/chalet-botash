@@ -1,8 +1,11 @@
-import React, { FC, useEffect, useState } from 'react';
-import { Gallery } from '../components/gallery';
+import React, { FC, useEffect, useRef, useState } from 'react';
+import { Container } from '@mui/material';
 import { airtableBase } from '../../../app';
-import { mapGalleryData } from '../../../services/mappers';
 import { GalleryData } from '../galary.model';
+import { Gallery } from '../components/gallery';
+import { mapGalleryData } from '../../../services/mappers';
+import { useWindowDimensions } from '../../../hooks/useWindowDeminision';
+import { useCustomIntersectionObserver } from '../../../hooks/intersectionObserver';
 
 export const GalleryContainer: FC<{ handleOnView: (tabId: string) => void; activeTab: string }> = ({
 	activeTab,
@@ -12,6 +15,11 @@ export const GalleryContainer: FC<{ handleOnView: (tabId: string) => void; activ
 	const [data, setData] = useState<GalleryData[]>([]);
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const [isModalOpen, setIsModalOpen] = useState(false);
+
+	const ref = useRef(null);
+	const screen = useWindowDimensions();
+
+	useCustomIntersectionObserver(ref, activeTab, handleOnView);
 
 	useEffect(() => {
 		if (activeTab === 'gallery' && data.length === 0) {
@@ -38,15 +46,18 @@ export const GalleryContainer: FC<{ handleOnView: (tabId: string) => void; activ
 	const galleryDataSliced = data.slice(0, imagesToShow);
 
 	return (
-		<Gallery
-			activeTab={activeTab}
-			handleOnView={handleOnView}
-			isModalOpen={isModalOpen}
-			toggleModal={toggleModal}
-			currentIndex={currentIndex}
-			sliderImages={data}
-			images={galleryDataSliced}
-			showModalImage={showModalImage}
-		/>
+		<Container id="gallery" ref={ref} component="section" sx={{ p: '64px 0', scrollMarginTop: '64px' }}>
+			<Gallery
+				screenWidth={screen.width}
+				activeTab={activeTab}
+				handleOnView={handleOnView}
+				isModalOpen={isModalOpen}
+				toggleModal={toggleModal}
+				currentIndex={currentIndex}
+				sliderImages={data}
+				images={galleryDataSliced}
+				showModalImage={showModalImage}
+			/>
+		</Container>
 	);
 };
