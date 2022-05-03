@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
+import { RoomCardProps } from '../models/rooms.model';
+import Typography from '../../../components/Typography';
 import { Button, Card, CardActionArea, CardActions, CardContent, CardMedia } from '@mui/material';
-import Typography from '../../components/Typography';
-import { RoomsData } from './rooms.model';
 
-export const RoomCard: FC<RoomsData> = ({ title, description, image, price }) => {
+export const RoomCard: FC<RoomCardProps> = ({ title, description, image, price }) => {
 	return (
 		<Card
 			sx={{

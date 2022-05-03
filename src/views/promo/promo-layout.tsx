@@ -1,7 +1,7 @@
 import React, { FC, useRef } from 'react';
 import Box from '@mui/material/Box';
 import { SxProps } from '@mui/system';
-import { currentTabProps } from '../../models/active-tab.model';
+import { CurrentTabProps } from '../../models/active-tab.model';
 import Container from '@mui/material/Container';
 import { ArrowDownward } from '@mui/icons-material';
 import { styled, Theme } from '@mui/material/styles';
@@ -40,7 +40,7 @@ const Background = styled(Box)(({ theme }: { theme: Theme }) => ({
 	},
 }));
 
-interface PromoLayoutProps extends currentTabProps {
+interface PromoLayoutProps extends CurrentTabProps {
 	sxBackground: SxProps<Theme>;
 }
 

@@ -1,4 +1,4 @@
-export interface currentTabProps {
+export interface CurrentTabProps {
 	handleOnView: (tabId: string) => void;
 	currentTab: string;
 }

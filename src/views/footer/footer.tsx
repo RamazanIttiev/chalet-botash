@@ -3,13 +3,13 @@ import Box from '@mui/material/Box';
 import { Link } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import Typography from '../../components/Typography';
-import { currentTabProps } from '../../models/active-tab.model';
+import { CurrentTabProps } from '../../models/active-tab.model';
 import { Instagram, Telegram, WhatsApp } from '@mui/icons-material';
 import { useCustomIntersectionObserver } from '../../hooks/intersectionObserver';
 
 import { iconStyle } from './theme/footer.styled';
 
-export const Footer: FC<currentTabProps> = ({ currentTab, handleOnView }) => {
+export const Footer: FC<CurrentTabProps> = ({ currentTab, handleOnView }) => {
 	const ref = useRef(null);
 
 	useCustomIntersectionObserver(ref, currentTab, handleOnView);

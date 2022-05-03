@@ -5,12 +5,12 @@ import { AboutData } from '../about.model';
 import { About } from '../components/about';
 import { airtableBase } from '../../../app';
 import Container from '@mui/material/Container';
-import { mapAboutData } from '../../../services/mappers';
-import { useCustomIntersectionObserver } from '../../../hooks/intersectionObserver';
-import { currentTabProps } from '../../../models/active-tab.model';
 import Typography from '../../../components/Typography';
+import { mapAboutData } from '../../../services/mappers';
+import { CurrentTabProps } from '../../../models/active-tab.model';
+import { useCustomIntersectionObserver } from '../../../hooks/intersectionObserver';
 
-export const AboutContainer: FC<currentTabProps> = ({ currentTab, handleOnView }) => {
+export const AboutContainer: FC<CurrentTabProps> = ({ currentTab, handleOnView }) => {
 	const [data, setData] = useState<AboutData[]>([]);
 	const ref = useRef(null);
 

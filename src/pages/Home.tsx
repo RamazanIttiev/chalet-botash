@@ -14,9 +14,9 @@ const GalleryContainer = lazy(() =>
 	})),
 );
 
-const Rooms = lazy(() =>
-	import('../views/rooms/rooms').then(({ Rooms }) => ({
-		default: Rooms,
+const RoomsContainer = lazy(() =>
+	import('../views/rooms/containers/rooms-container').then(({ RoomsContainer }) => ({
+		default: RoomsContainer,
 	})),
 );
 
@@ -31,7 +31,7 @@ export const Home: FC<HomeProps> = ({ currentTab, handleOnView }) => {
 			<Promo currentTab={currentTab} handleOnView={handleOnView} />
 			<AboutContainer currentTab={currentTab} handleOnView={handleOnView} />
 			<GalleryContainer currentTab={currentTab} handleOnView={handleOnView} />
-			<Rooms currentTab={currentTab} handleOnView={handleOnView} />
+			<RoomsContainer currentTab={currentTab} handleOnView={handleOnView} />
 		</Box>
 	);
 };
