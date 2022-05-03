@@ -2,18 +2,18 @@ import React, { FC, useEffect, useRef, useState } from 'react';
 import { RoomCard } from './room-card';
 import { airtableBase } from '../../app';
 import { RoomsData } from './rooms.model';
-import { ActiveTabProps } from '../../models/active-tab.model';
+import { currentTabProps } from '../../models/active-tab.model';
 import { Box, Container, Grid } from '@mui/material';
 import Typography from '../../components/Typography';
 import { mapRoomsData } from '../../services/mappers';
 import { useCustomIntersectionObserver } from '../../hooks/intersectionObserver';
 
-export const Rooms: FC<ActiveTabProps> = ({ handleOnView, activeTab }) => {
+export const Rooms: FC<currentTabProps> = ({ handleOnView, currentTab }) => {
 	const [data, setData] = useState<RoomsData[]>([]);
 	const ref = useRef(null);
 
 	useEffect(() => {
-		if (activeTab === 'rooms' && data.length === 0) {
+		if (currentTab === 'rooms' && data.length === 0) {
 			airtableBase('Rooms')
 				.select({
 					view: 'Grid view',
@@ -23,9 +23,9 @@ export const Rooms: FC<ActiveTabProps> = ({ handleOnView, activeTab }) => {
 					return setData(mapRoomsData(records));
 				});
 		}
-	}, [activeTab, data.length]);
+	}, [currentTab, data.length]);
 
-	useCustomIntersectionObserver(ref, activeTab, handleOnView);
+	useCustomIntersectionObserver(ref, currentTab, handleOnView);
 
 	return (
 		<Box

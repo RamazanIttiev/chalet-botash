@@ -9,14 +9,14 @@ export const intersectionOptions = {
 
 export const useCustomIntersectionObserver = (
 	ref: MutableRefObject<null>,
-	activeTab: string,
-	handleInView: (activeTab: string) => void,
+	currentTab: string,
+	handleInView: (currentTab: string) => void,
 ) => {
 	useIntersectionObserver({
 		ref,
 		options: intersectionOptions,
 		callback: entries => {
-			if (entries.target.id !== activeTab && entries.isIntersecting) {
+			if (entries.target.id !== currentTab && entries.isIntersecting) {
 				handleInView(entries.target.id);
 			}
 		},

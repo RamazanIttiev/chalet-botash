@@ -3,16 +3,16 @@ import Box from '@mui/material/Box';
 import { Link } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import Typography from '../../components/Typography';
-import { ActiveTabProps } from '../../models/active-tab.model';
+import { currentTabProps } from '../../models/active-tab.model';
 import { Instagram, Telegram, WhatsApp } from '@mui/icons-material';
 import { useCustomIntersectionObserver } from '../../hooks/intersectionObserver';
 
 import { iconStyle } from './theme/footer.styled';
 
-export const Footer: FC<ActiveTabProps> = ({ activeTab, handleOnView }) => {
+export const Footer: FC<currentTabProps> = ({ currentTab, handleOnView }) => {
 	const ref = useRef(null);
 
-	useCustomIntersectionObserver(ref, activeTab, handleOnView);
+	useCustomIntersectionObserver(ref, currentTab, handleOnView);
 
 	return (
 		<Typography component="footer" marked="center" sx={{ backgroundColor: 'secondary.light', flexShrink: 0 }}>

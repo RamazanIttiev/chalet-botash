@@ -5,12 +5,12 @@ import { GalleryData } from '../galary.model';
 import { GalleryCarousel } from './gallery-carousel';
 import { GallerySkeleton } from './gallery-skeleton';
 import Typography from '../../../components/Typography';
-import { ActiveTabProps } from '../../../models/active-tab.model';
+import { currentTabProps } from '../../../models/active-tab.model';
 
 import theme from '../../../theme';
 import { ImageBackdrop, ImageIconButton } from '../theme/gallery.styled';
 
-interface GalleryProps extends ActiveTabProps {
+interface GalleryProps extends currentTabProps {
 	isModalOpen: boolean;
 	currentIndex: number;
 	images: GalleryData[];

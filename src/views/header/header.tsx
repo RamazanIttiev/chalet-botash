@@ -5,10 +5,10 @@ import theme from '../../theme';
 import { LinkStyled } from './theme/header.styled';
 
 interface HeaderProps {
-	activeTab: string;
+	currentTab: string;
 }
 
-export const Header: FC<HeaderProps> = ({ activeTab }) => {
+export const Header: FC<HeaderProps> = ({ currentTab }) => {
 	return (
 		<AppBar
 			enableColorOnDark
@@ -22,7 +22,7 @@ export const Header: FC<HeaderProps> = ({ activeTab }) => {
 			<Toolbar>
 				<nav style={{ justifyContent: 'space-between', width: '100%' }}>
 					<LinkStyled
-						activeTab={false}
+						$currentTab={false}
 						sx={{
 							display: 'none',
 							'&:hover': {
@@ -60,28 +60,28 @@ export const Header: FC<HeaderProps> = ({ activeTab }) => {
 										backgroundSize: '0 !important',
 									},
 								}}
-								activeTab={false}
+								$currentTab={false}
 								href="#promo">
 								Logo
 							</LinkStyled>
 						</Grid>
 						<ListItem sx={{ p: 0 }}>
-							<LinkStyled activeTab={activeTab === 'about'} href="#about">
+							<LinkStyled $currentTab={currentTab === 'about'} href="#about">
 								О нас
 							</LinkStyled>
 						</ListItem>
 						<ListItem sx={{ p: 0 }}>
-							<LinkStyled activeTab={activeTab === 'gallery'} href="#gallery">
+							<LinkStyled $currentTab={currentTab === 'gallery'} href="#gallery">
 								Галерея
 							</LinkStyled>
 						</ListItem>
 						<ListItem sx={{ p: 0 }}>
-							<LinkStyled activeTab={activeTab === 'rooms'} href="#rooms">
+							<LinkStyled $currentTab={currentTab === 'rooms'} href="#rooms">
 								Номера
 							</LinkStyled>
 						</ListItem>
 						<ListItem sx={{ p: 0 }}>
-							<LinkStyled activeTab={activeTab === 'contacts'} href="#contacts">
+							<LinkStyled $currentTab={currentTab === 'contacts'} href="#contacts">
 								Контакты
 							</LinkStyled>
 						</ListItem>

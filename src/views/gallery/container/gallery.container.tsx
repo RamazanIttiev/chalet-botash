@@ -7,8 +7,8 @@ import { mapGalleryData } from '../../../services/mappers';
 import { useWindowDimensions } from '../../../hooks/useWindowDeminision';
 import { useCustomIntersectionObserver } from '../../../hooks/intersectionObserver';
 
-export const GalleryContainer: FC<{ handleOnView: (tabId: string) => void; activeTab: string }> = ({
-	activeTab,
+export const GalleryContainer: FC<{ handleOnView: (tabId: string) => void; currentTab: string }> = ({
+	currentTab,
 	handleOnView,
 }) => {
 	const imagesToShow = 6;
@@ -19,10 +19,10 @@ export const GalleryContainer: FC<{ handleOnView: (tabId: string) => void; activ
 	const ref = useRef(null);
 	const screen = useWindowDimensions();
 
-	useCustomIntersectionObserver(ref, activeTab, handleOnView);
+	useCustomIntersectionObserver(ref, currentTab, handleOnView);
 
 	useEffect(() => {
-		if (activeTab === 'gallery' && data.length === 0) {
+		if (currentTab === 'gallery' && data.length === 0) {
 			airtableBase('Gallery')
 				.select({
 					view: 'Grid view',
@@ -32,7 +32,7 @@ export const GalleryContainer: FC<{ handleOnView: (tabId: string) => void; activ
 					return setData(mapGalleryData(records));
 				});
 		}
-	}, [activeTab, data.length]);
+	}, [currentTab, data.length]);
 
 	const toggleModal = () => {
 		setIsModalOpen(!isModalOpen);
@@ -49,7 +49,7 @@ export const GalleryContainer: FC<{ handleOnView: (tabId: string) => void; activ
 		<Container id="gallery" ref={ref} component="section" sx={{ p: '64px 0', scrollMarginTop: '64px' }}>
 			<Gallery
 				screenWidth={screen.width}
-				activeTab={activeTab}
+				currentTab={currentTab}
 				handleOnView={handleOnView}
 				isModalOpen={isModalOpen}
 				toggleModal={toggleModal}

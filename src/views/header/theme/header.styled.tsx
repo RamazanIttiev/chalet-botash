@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Link, LinkProps } from '@mui/material';
 
 interface LinkStyleProps extends LinkProps {
-	activeTab?: boolean;
+	$currentTab: boolean;
 }
 
 export const LinkStyled = styled(Link).attrs({
@@ -28,8 +28,8 @@ export const LinkStyled = styled(Link).attrs({
 		},
 
 		'&::after': {
-			content: props.activeTab ? '""' : 'unset',
-			width: props.activeTab ? '100%' : 0,
+			content: props.$currentTab ? '""' : 'unset',
+			width: props.$currentTab ? '100%' : 0,
 			height: '5px',
 			backgroundColor: '#fff7ed',
 			backgroundRepeat: 'no-repeat',

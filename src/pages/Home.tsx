@@ -21,17 +21,17 @@ const Rooms = lazy(() =>
 );
 
 interface HomeProps {
+	currentTab: string;
 	handleOnView: (tabId: string) => void;
-	activeTab: string;
 }
 
-export const Home: FC<HomeProps> = ({ activeTab, handleOnView }) => {
+export const Home: FC<HomeProps> = ({ currentTab, handleOnView }) => {
 	return (
 		<Box component="main" sx={{ flexGrow: 1 }}>
-			<Promo activeTab={activeTab} handleOnView={handleOnView} />
-			<AboutContainer activeTab={activeTab} handleOnView={handleOnView} />
-			<GalleryContainer activeTab={activeTab} handleOnView={handleOnView} />
-			<Rooms activeTab={activeTab} handleOnView={handleOnView} />
+			<Promo currentTab={currentTab} handleOnView={handleOnView} />
+			<AboutContainer currentTab={currentTab} handleOnView={handleOnView} />
+			<GalleryContainer currentTab={currentTab} handleOnView={handleOnView} />
+			<Rooms currentTab={currentTab} handleOnView={handleOnView} />
 		</Box>
 	);
 };

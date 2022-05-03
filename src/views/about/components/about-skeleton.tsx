@@ -32,8 +32,9 @@ export const AboutSkeleton: FC<AboutSkeletonProps> = ({ id }) => {
 					/>
 				</Grid>
 				<Grid item sm={8} sx={{ width: '100%' }}>
-					{Array.from([1, 2, 3]).map(() => (
+					{Array.from([1, 2, 3]).map((_, index) => (
 						<Skeleton
+							key={index}
 							sx={{
 								display: 'flex',
 								flexDirection: 'column',

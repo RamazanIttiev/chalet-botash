@@ -7,15 +7,15 @@ import { airtableBase } from '../../../app';
 import Container from '@mui/material/Container';
 import { mapAboutData } from '../../../services/mappers';
 import { useCustomIntersectionObserver } from '../../../hooks/intersectionObserver';
-import { ActiveTabProps } from '../../../models/active-tab.model';
+import { currentTabProps } from '../../../models/active-tab.model';
 import Typography from '../../../components/Typography';
 
-export const AboutContainer: FC<ActiveTabProps> = ({ activeTab, handleOnView }) => {
+export const AboutContainer: FC<currentTabProps> = ({ currentTab, handleOnView }) => {
 	const [data, setData] = useState<AboutData[]>([]);
 	const ref = useRef(null);
 
 	useEffect(() => {
-		if (activeTab === 'about' && data.length === 0) {
+		if (currentTab === 'about' && data.length === 0) {
 			airtableBase('About')
 				.select({
 					view: 'Grid view',
@@ -25,9 +25,9 @@ export const AboutContainer: FC<ActiveTabProps> = ({ activeTab, handleOnView }) 
 					return setData(mapAboutData(records));
 				});
 		}
-	}, [activeTab, data.length]);
+	}, [currentTab, data.length]);
 
-	useCustomIntersectionObserver(ref, activeTab, handleOnView);
+	useCustomIntersectionObserver(ref, currentTab, handleOnView);
 
 	return (
 		<Box

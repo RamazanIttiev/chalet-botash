@@ -11,19 +11,19 @@ export const airtableBase = new Airtable({
 }).base('appODUEXCW5oqxyCY');
 
 const App = () => {
-	const [activeTab, setActiveTab] = useState('');
+	const [currentTab, setCurrentTab] = useState('');
 
 	const handleOnView = (tabId: string) => {
-		setActiveTab(tabId);
+		setCurrentTab(tabId);
 	};
 	return (
 		<BrowserRouter>
-			<Header activeTab={activeTab} />
+			<Header currentTab={currentTab} />
 			<Routes>
-				<Route path="/" element={<Home activeTab={activeTab} handleOnView={handleOnView} />} />
+				<Route path="/" element={<Home currentTab={currentTab} handleOnView={handleOnView} />} />
 				<Route path="*" element={<Error />} />
 			</Routes>
-			<Footer activeTab={activeTab} handleOnView={handleOnView} />
+			<Footer currentTab={currentTab} handleOnView={handleOnView} />
 		</BrowserRouter>
 	);
 };

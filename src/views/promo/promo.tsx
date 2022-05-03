@@ -3,13 +3,15 @@ import Typography from '../../components/Typography';
 import { PromoLayout } from './promo-layout';
 import PromoBgr from './assets/PromoBgr.jpeg';
 
-export const Promo: FC<{ handleOnView: (tabId: string) => void; activeTab: string }> = ({
-	activeTab,
-	handleOnView,
-}) => {
+interface PromoProps {
+	handleOnView: (tabId: string) => void;
+	currentTab: string;
+}
+
+export const Promo: FC<PromoProps> = ({ currentTab, handleOnView }) => {
 	return (
 		<PromoLayout
-			activeTab={activeTab}
+			currentTab={currentTab}
 			handleOnView={handleOnView}
 			sxBackground={{
 				backgroundImage: `url(${PromoBgr})`,

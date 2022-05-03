@@ -1,7 +1,7 @@
 import React, { FC, useRef } from 'react';
 import Box from '@mui/material/Box';
 import { SxProps } from '@mui/system';
-import { ActiveTabProps } from '../../models/active-tab.model';
+import { currentTabProps } from '../../models/active-tab.model';
 import Container from '@mui/material/Container';
 import { ArrowDownward } from '@mui/icons-material';
 import { styled, Theme } from '@mui/material/styles';
@@ -40,14 +40,14 @@ const Background = styled(Box)(({ theme }: { theme: Theme }) => ({
 	},
 }));
 
-interface PromoLayoutProps extends ActiveTabProps {
+interface PromoLayoutProps extends currentTabProps {
 	sxBackground: SxProps<Theme>;
 }
 
-export const PromoLayout: FC<PromoLayoutProps> = ({ activeTab, handleOnView, sxBackground, children }) => {
+export const PromoLayout: FC<PromoLayoutProps> = ({ currentTab, handleOnView, sxBackground, children }) => {
 	const ref = useRef(null);
 
-	useCustomIntersectionObserver(ref, activeTab, handleOnView);
+	useCustomIntersectionObserver(ref, currentTab, handleOnView);
 
 	return (
 		<PromoLayoutRoot ref={ref} id="promo">
