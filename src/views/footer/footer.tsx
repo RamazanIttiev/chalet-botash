@@ -7,7 +7,7 @@ import { CurrentTabProps } from '../../models/active-tab.model';
 import { Instagram, Telegram, WhatsApp } from '@mui/icons-material';
 import { useCustomIntersectionObserver } from '../../hooks/intersectionObserver';
 
-import { iconStyle } from './theme/footer.styled';
+import { contactsStyle, socialMediaStyle } from './theme/footer.styled';
 
 export const Footer: FC<CurrentTabProps> = ({ currentTab, handleOnView }) => {
 	const ref = useRef(null);
@@ -17,37 +17,109 @@ export const Footer: FC<CurrentTabProps> = ({ currentTab, handleOnView }) => {
 	return (
 		<Typography component="footer" marked="center" sx={{ backgroundColor: 'secondary.light', flexShrink: 0 }}>
 			<Grid container id="contacts" ref={ref}>
-				<Grid item xs={12} sm={6} md={6} display={'flex'} alignItems={'center'}>
-					<Grid container spacing={4} sx={{ p: '24px 0', alignItems: 'center', flexDirection: 'column' }}>
-						<Grid item xs={12} sm={3} md={6}>
-							<Link
-								variant="h6"
-								underline="none"
-								color="inherit"
-								href="#home"
-								sx={{ fontSize: 24, letterSpacing: 4, cursor: 'pointer' }}>
-								Logo
-							</Link>
-						</Grid>
-						<Grid item xs={12} sm={3} md={6} display={'flex'} justifyContent={'center'}>
-							<Box component="a" target={'_blank'} href="https://wa.me/+79214425044" sx={iconStyle}>
-								<WhatsApp />
-								<span style={{ color: 'transparent', position: 'absolute' }}>WhatsApp</span>
+				<Grid
+					item
+					xs={12}
+					sm={6}
+					md={6}
+					sx={{
+						display: 'flex',
+						flexDirection: 'column',
+						alignItems: 'center',
+						p: '81px 0',
+						position: 'relative',
+					}}>
+					<Link
+						variant="h6"
+						underline="none"
+						color="inherit"
+						href="#home"
+						sx={{ fontSize: 24, letterSpacing: 4, cursor: 'pointer', textAlign: 'center' }}>
+						Chalet Botash
+					</Link>
+					<Box
+						sx={{
+							alignItems: 'center',
+							display: 'flex',
+							justifyContent: 'space-between',
+							width: '80%',
+							mt: '48px',
+						}}>
+						<Box
+							sx={{
+								display: 'flex',
+								flexDirection: 'column',
+								alignItems: 'baseline',
+								justifyContent: 'center',
+							}}>
+							<Box component="a" target={'_blank'} href="tel:89214425044" sx={contactsStyle}>
+								<div>Телеофн:</div>
+								<span>8 (921) 44-250-44</span>
+							</Box>
+							<Box component="a" target={'_blank'} href="mailto:botashev01@mail.ru" sx={contactsStyle}>
+								<div>Почта:</div>
+								<span>botashev01@mail.ru</span>
 							</Box>
 							<Box
 								component="a"
 								target={'_blank'}
-								href="https://instagram.com/ibra_botashev?utm_medium=copy_link"
-								sx={iconStyle}>
-								<Instagram />
-								<span style={{ color: 'transparent', position: 'absolute' }}>Instagram</span>
+								href="https://www.google.com/maps/@43.2725,42.682944,16z?hl=ru"
+								sx={contactsStyle}>
+								<div>Адрес:</div>
+								<span>Нейтрино, Кабардино-Балкарская Республика</span>
 							</Box>
-							<Box component="a" target={'_blank'} href="https://t.me/Ibotashev" sx={iconStyle}>
-								<Telegram />
-								<span style={{ color: 'transparent', position: 'absolute' }}>Telegram</span>
+							<Box
+								sx={{
+									display: 'flex',
+									alignItems: 'center',
+									justifyContent: 'center',
+									position: 'absolute',
+									bottom: '24px',
+									right: '50%',
+									transform: 'translate(50%)',
+								}}>
+								<Box
+									component="a"
+									target={'_blank'}
+									href="https://wa.me/+79214425044"
+									sx={{
+										...socialMediaStyle,
+									}}>
+									<WhatsApp className={'linkIcon'} sx={{ mr: 1 }} />
+									{/*<Box className={'linkTextGroup'} sx={{ display: 'flex', alignItems: 'center' }}>*/}
+									{/*	<ArrowBack sx={{ fontSize: '16px', mr: 1, background: 'none' }} />*/}
+									{/*	<span>WhatsApp</span>*/}
+									{/*</Box>*/}
+								</Box>
+								<Box
+									component="a"
+									target={'_blank'}
+									href="https://instagram.com/ibra_botashev?utm_medium=copy_link"
+									sx={{
+										...socialMediaStyle,
+									}}>
+									<Instagram className={'linkIcon'} sx={{ mr: 1 }} />
+									{/*<Box className={'linkTextGroup'} sx={{ display: 'flex', alignItems: 'center' }}>*/}
+									{/*	<ArrowBack sx={{ fontSize: '16px', mr: 1, background: 'none' }} />*/}
+									{/*	<span>Instagram</span>*/}
+									{/*</Box>*/}
+								</Box>
+								<Box
+									component="a"
+									target={'_blank'}
+									href="https://t.me/Ibotashev"
+									sx={{
+										...socialMediaStyle,
+									}}>
+									<Telegram className={'linkIcon'} sx={{ mr: 1 }} />
+									{/*<Box className={'linkTextGroup'} sx={{ display: 'flex', alignItems: 'center' }}>*/}
+									{/*	<ArrowBack sx={{ fontSize: '16px', mr: 1, background: 'none' }} />*/}
+									{/*	<span>Telegram</span>*/}
+									{/*</Box>*/}
+								</Box>
 							</Box>
-						</Grid>
-					</Grid>
+						</Box>
+					</Box>
 				</Grid>
 				<Grid item xs={12} sm={6} md={6}>
 					<iframe
