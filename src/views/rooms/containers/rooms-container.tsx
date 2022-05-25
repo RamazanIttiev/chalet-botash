@@ -13,7 +13,7 @@ export const RoomsContainer: FC<CurrentTabProps> = ({ handleOnView, currentTab }
 	const ref = useRef(null);
 
 	useCustomIntersectionObserver(ref, currentTab, handleOnView);
-
+	console.log(currentTab);
 	useEffect(() => {
 		if (currentTab === 'rooms' && data.length === 0) {
 			airtableBase('Rooms')

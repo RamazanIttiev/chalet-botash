@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { AppBar, Grid, List, ListItem, Toolbar } from '@mui/material';
+import { AppBar, Box, Grid, List, ListItem, Toolbar } from '@mui/material';
 
 import theme from '../../theme';
 import { LinkStyled } from './theme/header.styled';
@@ -36,14 +36,13 @@ export const Header: FC<HeaderProps> = ({ currentTab }) => {
 							},
 						}}
 						href="#promo">
-						Logo
+						Chalet Botash
 					</LinkStyled>
 					<Grid
 						container
 						component={List}
 						sx={{
 							flexWrap: 'nowrap',
-							width: '60%',
 
 							[theme.breakpoints.down('lg')]: {
 								width: '100%',
@@ -53,7 +52,15 @@ export const Header: FC<HeaderProps> = ({ currentTab }) => {
 								display: 'none',
 							},
 						}}>
-						<Grid item component={ListItem} sx={{ p: 0 }}>
+						<Grid
+							item
+							component={ListItem}
+							sx={{
+								p: 0,
+								[theme.breakpoints.down('md')]: {
+									width: 'auto',
+								},
+							}}>
 							<LinkStyled
 								sx={{
 									'&:hover': {
@@ -62,29 +69,35 @@ export const Header: FC<HeaderProps> = ({ currentTab }) => {
 								}}
 								$currentTab={false}
 								href="#promo">
-								Logo
+								Chalet Botash
 							</LinkStyled>
 						</Grid>
-						<ListItem sx={{ p: 0 }}>
-							<LinkStyled $currentTab={currentTab === 'about'} href="#about">
-								О нас
-							</LinkStyled>
-						</ListItem>
-						<ListItem sx={{ p: 0 }}>
-							<LinkStyled $currentTab={currentTab === 'gallery'} href="#gallery">
-								Галерея
-							</LinkStyled>
-						</ListItem>
-						<ListItem sx={{ p: 0 }}>
-							<LinkStyled $currentTab={currentTab === 'rooms'} href="#rooms">
-								Номера
-							</LinkStyled>
-						</ListItem>
-						<ListItem sx={{ p: 0 }}>
-							<LinkStyled $currentTab={currentTab === 'contacts'} href="#contacts">
-								Контакты
-							</LinkStyled>
-						</ListItem>
+						<Box
+							sx={{
+								width: '100%',
+								display: 'flex',
+							}}>
+							<ListItem sx={{ p: 0 }}>
+								<LinkStyled $currentTab={currentTab === 'about'} href="#about">
+									О нас
+								</LinkStyled>
+							</ListItem>
+							<ListItem sx={{ p: 0 }}>
+								<LinkStyled $currentTab={currentTab === 'gallery'} href="#gallery">
+									Галерея
+								</LinkStyled>
+							</ListItem>
+							<ListItem sx={{ p: 0 }}>
+								<LinkStyled $currentTab={currentTab === 'rooms'} href="#rooms">
+									Номера
+								</LinkStyled>
+							</ListItem>
+							<ListItem sx={{ p: 0 }}>
+								<LinkStyled $currentTab={currentTab === 'contacts'} href="#contacts">
+									Контакты
+								</LinkStyled>
+							</ListItem>
+						</Box>
 					</Grid>
 				</nav>
 			</Toolbar>

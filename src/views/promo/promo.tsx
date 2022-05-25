@@ -23,8 +23,8 @@ export const Promo: FC<PromoProps> = ({ currentTab, handleOnView }) => {
 				Гостевой дом Chalet Botash
 			</Typography>
 			<Typography color="inherit" align="center" component="h2" variant="h5" sx={{ mb: 4, mt: 4 }}>
-				Приглашаем Вас почувствовать знаменитое кавказское гостеприимство, вдохнуть чистый, горный воздух и на
-				время забыть про городскую суету у Нас в гостевом доме Chalet Botash
+				Приглашаем вас почувствовать знаменитое кавказское гостеприимство, вдохнуть чистый, горный воздух и на
+				время забыть про городскую суету у нас в гостевом доме Chalet Botash
 			</Typography>
 		</PromoLayout>
 	);
