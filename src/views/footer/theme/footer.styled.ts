@@ -6,8 +6,10 @@ export const socialMediaStyle = {
 	textDecoration: 'none',
 	justifyContent: 'center',
 	'& .linkIcon': {
+		mr: '8px',
+		width: '40px',
+		height: '40px',
 		padding: '8px',
-		fontSize: '40px',
 		backgroundColor: 'warning.main',
 
 		'&:hover': {

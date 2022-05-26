@@ -1,18 +1,36 @@
-import React, { FC, useRef } from 'react';
+import React, { FC, useEffect, useRef, useState } from 'react';
 import Box from '@mui/material/Box';
 import { Link } from '@mui/material';
 import Grid from '@mui/material/Grid';
+import { airtableBase } from '../../app';
+import { FooterData } from './footer.model';
 import Typography from '../../components/Typography';
+import { mapContactsData } from '../../services/mappers';
 import { CurrentTabProps } from '../../models/active-tab.model';
-import { Instagram, Telegram, WhatsApp } from '@mui/icons-material';
 import { useCustomIntersectionObserver } from '../../hooks/intersectionObserver';
 
 import { contactsStyle, socialMediaStyle } from './theme/footer.styled';
 
 export const Footer: FC<CurrentTabProps> = ({ currentTab, handleOnView }) => {
+	const [data, setData] = useState<FooterData[]>([]);
+	const socialsLinks = data.slice(3);
+
 	const ref = useRef(null);
 
 	useCustomIntersectionObserver(ref, currentTab, handleOnView);
+
+	useEffect(() => {
+		if (currentTab === 'contacts' && data.length === 0) {
+			airtableBase('Contacts')
+				.select({
+					view: 'Grid view',
+				})
+				.eachPage(records => {
+					// @ts-ignore
+					return setData(mapContactsData(records));
+				});
+		}
+	}, [currentTab, data.length]);
 
 	return (
 		<Typography component="footer" marked="center" sx={{ backgroundColor: 'secondary.light', flexShrink: 0 }}>
@@ -26,7 +44,7 @@ export const Footer: FC<CurrentTabProps> = ({ currentTab, handleOnView }) => {
 						display: 'flex',
 						flexDirection: 'column',
 						alignItems: 'center',
-						p: '81px 0',
+						pt: '81px',
 						position: 'relative',
 					}}>
 					<Link
@@ -52,22 +70,24 @@ export const Footer: FC<CurrentTabProps> = ({ currentTab, handleOnView }) => {
 								alignItems: 'baseline',
 								justifyContent: 'center',
 							}}>
-							<Box component="a" target={'_blank'} href="tel:89214425044" sx={contactsStyle}>
-								<div>Телеофн:</div>
-								<span>8 (921) 44-250-44</span>
-							</Box>
-							<Box component="a" target={'_blank'} href="mailto:botashev01@mail.ru" sx={contactsStyle}>
-								<div>Почта:</div>
-								<span>botashev01@mail.ru</span>
-							</Box>
-							<Box
-								component="a"
-								target={'_blank'}
-								href="https://www.google.com/maps/@43.2725,42.682944,16z?hl=ru"
-								sx={contactsStyle}>
-								<div>Адрес:</div>
-								<span>Нейтрино, Кабардино-Балкарская Республика</span>
-							</Box>
+							{data.map(({ title, linkTitle, text }) => {
+								return (
+									<Box
+										component="a"
+										target={'_blank'}
+										href={
+											title === 'Телефон'
+												? `tel:${linkTitle}`
+												: title === 'Почта'
+												? `mailto:${linkTitle}`
+												: linkTitle
+										}
+										sx={contactsStyle}>
+										<div>{title}</div>
+										<span>{text}</span>
+									</Box>
+								);
+							})}
 							<Box
 								sx={{
 									display: 'flex',
@@ -78,45 +98,23 @@ export const Footer: FC<CurrentTabProps> = ({ currentTab, handleOnView }) => {
 									right: '50%',
 									transform: 'translate(50%)',
 								}}>
-								<Box
-									component="a"
-									target={'_blank'}
-									href="https://wa.me/+79214425044"
-									sx={{
-										...socialMediaStyle,
-									}}>
-									<WhatsApp className={'linkIcon'} sx={{ mr: 1 }} />
-									{/*<Box className={'linkTextGroup'} sx={{ display: 'flex', alignItems: 'center' }}>*/}
-									{/*	<ArrowBack sx={{ fontSize: '16px', mr: 1, background: 'none' }} />*/}
-									{/*	<span>WhatsApp</span>*/}
-									{/*</Box>*/}
-								</Box>
-								<Box
-									component="a"
-									target={'_blank'}
-									href="https://instagram.com/ibra_botashev?utm_medium=copy_link"
-									sx={{
-										...socialMediaStyle,
-									}}>
-									<Instagram className={'linkIcon'} sx={{ mr: 1 }} />
-									{/*<Box className={'linkTextGroup'} sx={{ display: 'flex', alignItems: 'center' }}>*/}
-									{/*	<ArrowBack sx={{ fontSize: '16px', mr: 1, background: 'none' }} />*/}
-									{/*	<span>Instagram</span>*/}
-									{/*</Box>*/}
-								</Box>
-								<Box
-									component="a"
-									target={'_blank'}
-									href="https://t.me/Ibotashev"
-									sx={{
-										...socialMediaStyle,
-									}}>
-									<Telegram className={'linkIcon'} sx={{ mr: 1 }} />
-									{/*<Box className={'linkTextGroup'} sx={{ display: 'flex', alignItems: 'center' }}>*/}
-									{/*	<ArrowBack sx={{ fontSize: '16px', mr: 1, background: 'none' }} />*/}
-									{/*	<span>Telegram</span>*/}
-									{/*</Box>*/}
-								</Box>
+								{socialsLinks.map(({ title, linkTitle, icon }) => {
+									return (
+										<Box
+											component="a"
+											target={'_blank'}
+											href={linkTitle}
+											sx={{
+												...socialMediaStyle,
+											}}>
+											<img className={'linkIcon'} src={icon} alt={title} />
+											{/*<Box className={'linkTextGroup'} sx={{ display: 'flex', alignItems: 'center' }}>*/}
+											{/*	<ArrowBack sx={{ fontSize: '16px', mr: 1, background: 'none' }} />*/}
+											{/*	<span>WhatsApp</span>*/}
+											{/*</Box>*/}
+										</Box>
+									);
+								})}
 							</Box>
 						</Box>
 					</Box>

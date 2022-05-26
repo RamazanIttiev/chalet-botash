@@ -23,3 +23,11 @@ export const mapRoomsData = (galleryData: Records<FieldSet>) =>
 		description: fields.description,
 		image: fields.image && fields.image[0].url,
 	}));
+
+export const mapContactsData = (contactsData: Records<FieldSet>) =>
+	contactsData.map(({ fields }) => ({
+		text: fields.text,
+		icon: fields.icon && fields.icon[0].url,
+		title: fields.title,
+		linkTitle: fields.linkTitle,
+	}));
