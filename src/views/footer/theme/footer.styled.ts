@@ -27,7 +27,7 @@ export const socialMediaStyle = {
 export const contactsStyle = {
 	textDecoration: 'none',
 	color: 'black',
-	mb: '16px',
+	mb: '24px',
 	'& div': {
 		mr: '16px',
 		fontWeight: 'bold',
