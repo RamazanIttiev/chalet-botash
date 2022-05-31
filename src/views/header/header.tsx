@@ -1,104 +1,66 @@
 import React, { FC } from 'react';
-import { AppBar, Box, Grid, List, ListItem, Toolbar } from '@mui/material';
-
-import theme from '../../theme';
+import { AppBar, Toolbar, useMediaQuery } from '@mui/material';
 import { LinkStyled } from './theme/header.styled';
+import { MenuList } from './menu-list';
+import { MobileHeader } from './mobile-header';
 
 interface HeaderProps {
 	currentTab: string;
 }
 
 export const Header: FC<HeaderProps> = ({ currentTab }) => {
+	const isDesktop = useMediaQuery('(min-width:769px)');
+	const [isOpened, setIsOpened] = React.useState(false);
+
+	const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
+		if (
+			event &&
+			event.type === 'keydown' &&
+			((event as React.KeyboardEvent).key === 'Tab' || (event as React.KeyboardEvent).key === 'Shift')
+		) {
+			return;
+		}
+
+		setIsOpened(open);
+	};
+
 	return (
 		<AppBar
 			enableColorOnDark
 			sx={{
 				position: 'sticky',
 				top: 0,
-				[theme.breakpoints.down('sm')]: {
-					position: 'unset',
-				},
 			}}>
 			<Toolbar>
-				<nav style={{ justifyContent: 'space-between', width: '100%' }}>
+				<nav
+					style={{
+						display: 'flex',
+						flexWrap: 'nowrap',
+						alignItems: 'center',
+						justifyContent: 'space-between',
+						width: '100%',
+					}}>
 					<LinkStyled
-						$currentTab={false}
 						sx={{
-							display: 'none',
+							margin: '0 !important',
 							'&:hover': {
 								backgroundSize: '0 !important',
 							},
-							[theme.breakpoints.down('sm')]: {
-								width: '100%',
-								height: '100%',
-								textAlign: 'center',
-								display: 'block',
-							},
 						}}
+						$currentTab={false}
 						href="#promo">
 						Chalet Botash
 					</LinkStyled>
-					<Grid
-						container
-						component={List}
-						sx={{
-							flexWrap: 'nowrap',
-
-							[theme.breakpoints.down('lg')]: {
-								width: '100%',
-							},
-
-							[theme.breakpoints.down('sm')]: {
-								display: 'none',
-							},
-						}}>
-						<Grid
-							item
-							component={ListItem}
-							sx={{
-								p: 0,
-								[theme.breakpoints.down('md')]: {
-									width: 'auto',
-								},
-							}}>
-							<LinkStyled
-								sx={{
-									'&:hover': {
-										backgroundSize: '0 !important',
-									},
-								}}
-								$currentTab={false}
-								href="#promo">
-								Chalet Botash
-							</LinkStyled>
-						</Grid>
-						<Box
-							sx={{
-								width: '100%',
-								display: 'flex',
-							}}>
-							<ListItem sx={{ p: 0 }}>
-								<LinkStyled $currentTab={currentTab === 'about'} href="#about">
-									О нас
-								</LinkStyled>
-							</ListItem>
-							<ListItem sx={{ p: 0 }}>
-								<LinkStyled $currentTab={currentTab === 'gallery'} href="#gallery">
-									Галерея
-								</LinkStyled>
-							</ListItem>
-							<ListItem sx={{ p: 0 }}>
-								<LinkStyled $currentTab={currentTab === 'rooms'} href="#rooms">
-									Номера
-								</LinkStyled>
-							</ListItem>
-							<ListItem sx={{ p: 0 }}>
-								<LinkStyled $currentTab={currentTab === 'contacts'} href="#contacts">
-									Контакты
-								</LinkStyled>
-							</ListItem>
-						</Box>
-					</Grid>
+					{isDesktop ? (
+						<MenuList toggleDrawer={toggleDrawer} isDesktop={isDesktop} currentTab={currentTab} />
+					) : (
+						<MobileHeader
+							isOpened={isOpened}
+							isDesktop={isDesktop}
+							currentTab={currentTab}
+							toggleDrawer={toggleDrawer}
+						/>
+					)}
 				</nav>
 			</Toolbar>
 		</AppBar>

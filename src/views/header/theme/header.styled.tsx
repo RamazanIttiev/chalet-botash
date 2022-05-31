@@ -11,11 +11,12 @@ export const LinkStyled = styled(Link).attrs({
 	color: 'inherit',
 })<LinkStyleProps>(props => {
 	return {
-		padding: '10px 0',
 		fontSize: 16,
 		letterSpacing: 4,
+		padding: '10px 0',
 		cursor: 'pointer',
 		position: 'relative',
+		width: 'max-content',
 		backgroundImage: 'linear-gradient(transparent 0%,transparent 90%,#fff7ed 90%,#fff7ed 100%)',
 		backgroundRepeat: 'no-repeat',
 		backgroundSize: '0% 100%',
