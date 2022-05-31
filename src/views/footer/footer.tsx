@@ -20,17 +20,15 @@ export const Footer: FC<CurrentTabProps> = ({ currentTab, handleOnView }) => {
 	useCustomIntersectionObserver(ref, currentTab, handleOnView);
 
 	useEffect(() => {
-		if (currentTab === 'contacts' && data.length === 0) {
-			airtableBase('Contacts')
-				.select({
-					view: 'Grid view',
-				})
-				.eachPage(records => {
-					// @ts-ignore
-					return setData(mapContactsData(records));
-				});
-		}
-	}, [currentTab, data.length]);
+		airtableBase('Contacts')
+			.select({
+				view: 'Grid view',
+			})
+			.eachPage(records => {
+				// @ts-ignore
+				return setData(mapContactsData(records));
+			});
+	}, [data.length]);
 
 	return (
 		<Typography component="footer" marked="center" sx={{ backgroundColor: 'secondary.light', flexShrink: 0 }}>

@@ -13,19 +13,17 @@ export const RoomsContainer: FC<CurrentTabProps> = ({ handleOnView, currentTab }
 	const ref = useRef(null);
 
 	useCustomIntersectionObserver(ref, currentTab, handleOnView);
-	console.log(currentTab);
+
 	useEffect(() => {
-		if (currentTab === 'rooms' && data.length === 0) {
-			airtableBase('Rooms')
-				.select({
-					view: 'Grid view',
-				})
-				.eachPage(records => {
-					// @ts-ignore
-					return setData(mapRoomsData(records));
-				});
-		}
-	}, [currentTab, data.length]);
+		airtableBase('Rooms')
+			.select({
+				view: 'Grid view',
+			})
+			.eachPage(records => {
+				// @ts-ignore
+				return setData(mapRoomsData(records));
+			});
+	}, [data.length]);
 
 	return (
 		<Box

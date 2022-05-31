@@ -15,17 +15,15 @@ export const AboutContainer: FC<CurrentTabProps> = ({ currentTab, handleOnView }
 	const ref = useRef(null);
 
 	useEffect(() => {
-		if (currentTab === 'about' && data.length === 0) {
-			airtableBase('About')
-				.select({
-					view: 'Grid view',
-				})
-				.eachPage(records => {
-					// @ts-ignore
-					return setData(mapAboutData(records));
-				});
-		}
-	}, [currentTab, data.length]);
+		airtableBase('About')
+			.select({
+				view: 'Grid view',
+			})
+			.eachPage(records => {
+				// @ts-ignore
+				return setData(mapAboutData(records));
+			});
+	}, [data.length]);
 
 	useCustomIntersectionObserver(ref, currentTab, handleOnView);
 

@@ -22,17 +22,15 @@ export const GalleryContainer: FC<{ handleOnView: (tabId: string) => void; curre
 	useCustomIntersectionObserver(ref, currentTab, handleOnView);
 
 	useEffect(() => {
-		if (currentTab === 'gallery' && data.length === 0) {
-			airtableBase('Gallery')
-				.select({
-					view: 'Grid view',
-				})
-				.eachPage(records => {
-					// @ts-ignore
-					return setData(mapGalleryData(records));
-				});
-		}
-	}, [currentTab, data.length]);
+		airtableBase('Gallery')
+			.select({
+				view: 'Grid view',
+			})
+			.eachPage(records => {
+				// @ts-ignore
+				return setData(mapGalleryData(records));
+			});
+	}, [data.length]);
 
 	const toggleModal = () => {
 		setIsModalOpen(!isModalOpen);
