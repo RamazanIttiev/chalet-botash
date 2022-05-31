@@ -31,3 +31,9 @@ export const mapContactsData = (contactsData: Records<FieldSet>) =>
 		title: fields.title,
 		linkTitle: fields.linkTitle,
 	}));
+
+export const mapPromoData = (promoData: Records<FieldSet>) =>
+	promoData.map(({ fields }) => ({
+		alt: fields.alt,
+		image: fields.image && fields.image[0].url,
+	}));

@@ -1,24 +1,43 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import Typography from '../../components/Typography';
 import { PromoLayout } from './promo-layout';
-import PromoBgr from './assets/PromoBgr.jpeg';
+import { airtableBase } from '../../app';
+import { mapPromoData } from '../../services/mappers';
 
 interface PromoProps {
 	handleOnView: (tabId: string) => void;
 	currentTab: string;
 }
 
+interface PromoDataProps {
+	alt: string;
+	image: string;
+}
+
 export const Promo: FC<PromoProps> = ({ currentTab, handleOnView }) => {
+	const [data, setData] = useState<PromoDataProps>();
+
+	useEffect(() => {
+		if (data === undefined) {
+			airtableBase('Promo')
+				.select({
+					view: 'Grid view',
+				})
+				.eachPage(records => {
+					// @ts-ignore
+					return setData(mapPromoData(records)[0]);
+				});
+		}
+	}, [data]);
+
 	return (
 		<PromoLayout
 			currentTab={currentTab}
 			handleOnView={handleOnView}
 			sxBackground={{
-				backgroundImage: `url(${PromoBgr})`,
+				backgroundImage: `url(${data?.image})`,
 				backgroundPosition: 'center',
 			}}>
-			{/* Increase the network loading priority of the background image. */}
-			{/*<img style={{ display: 'none' }} src={PromoBgr} alt="increase priority" />*/}
 			<Typography color="inherit" align="center" component="h1" variant="h2" marked="center">
 				Гостевой дом Chalet Botash
 			</Typography>
