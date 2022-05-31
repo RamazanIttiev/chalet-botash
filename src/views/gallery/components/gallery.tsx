@@ -83,7 +83,7 @@ export const Gallery: FC<GalleryProps> = ({
 											color: 'common.white',
 										}}>
 										<Typography component="h3" variant="h6" color="inherit">
-											{id === 6 && '+ еще'}
+											{id === 7 && '+ еще'}
 										</Typography>
 									</Box>
 								</ImageIconButton>
