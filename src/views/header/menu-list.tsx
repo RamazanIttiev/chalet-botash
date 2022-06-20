@@ -9,7 +9,6 @@ interface MenuListProps {
 }
 
 export const MenuList: FC<MenuListProps> = ({ currentTab, isDesktop, toggleDrawer }) => {
-	console.log(isDesktop);
 	return (
 		<List
 			sx={

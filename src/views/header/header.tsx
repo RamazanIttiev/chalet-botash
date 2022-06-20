@@ -1,8 +1,10 @@
 import React, { FC } from 'react';
 import { AppBar, Toolbar, useMediaQuery } from '@mui/material';
-import { LinkStyled } from './theme/header.styled';
+import { LinkStyled, StyledLogo } from './theme/header.styled';
 import { MenuList } from './menu-list';
 import { MobileHeader } from './mobile-header';
+
+import Logo from '../../assets/Logo.svg';
 
 interface HeaderProps {
 	currentTab: string;
@@ -49,7 +51,7 @@ export const Header: FC<HeaderProps> = ({ currentTab }) => {
 						}}
 						$currentTab={false}
 						href="#promo">
-						Chalet Botash
+						<StyledLogo src={Logo} alt="Logo" />
 					</LinkStyled>
 					{isDesktop ? (
 						<MenuList toggleDrawer={toggleDrawer} isDesktop={isDesktop} currentTab={currentTab} />
