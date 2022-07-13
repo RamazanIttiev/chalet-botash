@@ -13,7 +13,7 @@ export const About: FC<AboutProps> = ({ data }) => {
 	return (
 		<Grid container spacing={8} sx={{ justifyContent: 'center' }}>
 			{data.length === 0
-				? Array.from([1, 2, 3]).map(id => <AboutSkeleton key={id} id={id} />)
+				? Array.from([data.length]).map(id => <AboutSkeleton key={id} id={id} />)
 				: data.map(({ title, image, text, id }) => {
 						return (
 							<Grid

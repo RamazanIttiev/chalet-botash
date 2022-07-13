@@ -83,7 +83,7 @@ export const Gallery: FC<GalleryProps> = ({
 											color: 'common.white',
 										}}>
 										<Typography component="h3" variant="h6" color="inherit">
-											{id === 7 && '+ еще'}
+											{index === 5 && '+ еще'}
 										</Typography>
 									</Box>
 								</ImageIconButton>
@@ -115,7 +115,7 @@ export const Gallery: FC<GalleryProps> = ({
 					/>
 				)
 			) : (
-				<GallerySkeleton screenWidth={screenWidth} />
+				<GallerySkeleton images={images} screenWidth={screenWidth} />
 			)}
 		</React.Fragment>
 	);

@@ -38,4 +38,7 @@ export const contactsStyle = {
 	'&:hover span': {
 		borderBottom: '1px solid transparent',
 	},
+	'&last-child': {
+		marginBottom: 0,
+	},
 };

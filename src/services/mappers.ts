@@ -36,4 +36,6 @@ export const mapPromoData = (promoData: Records<FieldSet>) =>
 	promoData.map(({ fields }) => ({
 		alt: fields.alt,
 		image: fields.image && fields.image[0].url,
+		title: fields.title,
+		subtitle: fields.subtitle,
 	}));

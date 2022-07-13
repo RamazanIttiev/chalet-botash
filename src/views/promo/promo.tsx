@@ -12,6 +12,8 @@ interface PromoProps {
 interface PromoDataProps {
 	alt: string;
 	image: string;
+	title: string;
+	subtitle: string;
 }
 
 export const Promo: FC<PromoProps> = ({ currentTab, handleOnView }) => {
@@ -39,12 +41,26 @@ export const Promo: FC<PromoProps> = ({ currentTab, handleOnView }) => {
 				backgroundPosition: 'center',
 			}}>
 			<Typography color="inherit" align="center" component="h1" variant="h2" marked="center">
-				Гостевой дом Chalet Botash
+				{data?.title}
 			</Typography>
 			<Typography color="inherit" align="center" component="h2" variant="h5" sx={{ mb: 4, mt: 4 }}>
-				Приглашаем вас почувствовать знаменитое кавказское гостеприимство, вдохнуть чистый, горный воздух и на
-				время забыть про городскую суету у нас в гостевом доме Chalet Botash
+				{data?.subtitle}
 			</Typography>
+			{/*<Button*/}
+			{/*	href="#rooms"*/}
+			{/*	sx={{*/}
+			{/*		color: '#fff',*/}
+			{/*		border: '1px solid',*/}
+			{/*		padding: '8px 16px',*/}
+			{/*		background: 'rgba(255,255,255,.2)',*/}
+			{/*		transition: 'background 0.5s',*/}
+
+			{/*		'&hover': {*/}
+			{/*			background: 'transparent',*/}
+			{/*		},*/}
+			{/*	}}>*/}
+			{/*	К номерам*/}
+			{/*</Button>*/}
 		</PromoLayout>
 	);
 };

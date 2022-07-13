@@ -13,7 +13,7 @@ import { contactsStyle, socialMediaStyle } from './theme/footer.styled';
 
 export const Footer: FC<CurrentTabProps> = ({ currentTab, handleOnView }) => {
 	const [data, setData] = useState<FooterData[]>([]);
-	const socialsLinks = data.slice(3);
+	const socialsLinks = data.slice(4);
 
 	const ref = useRef(null);
 
@@ -42,7 +42,6 @@ export const Footer: FC<CurrentTabProps> = ({ currentTab, handleOnView }) => {
 						display: 'flex',
 						flexDirection: 'column',
 						alignItems: 'center',
-						pt: '81px',
 						position: 'relative',
 					}}>
 					<Link
@@ -67,6 +66,7 @@ export const Footer: FC<CurrentTabProps> = ({ currentTab, handleOnView }) => {
 								flexDirection: 'column',
 								alignItems: 'baseline',
 								justifyContent: 'center',
+								paddingBottom: '16px',
 							}}>
 							{data.map(({ title, linkTitle, text }) => {
 								return (
@@ -91,10 +91,7 @@ export const Footer: FC<CurrentTabProps> = ({ currentTab, handleOnView }) => {
 									display: 'flex',
 									alignItems: 'center',
 									justifyContent: 'center',
-									position: 'absolute',
-									bottom: '24px',
-									right: '50%',
-									transform: 'translate(50%)',
+									margin: '0 auto',
 								}}>
 								{socialsLinks.map(({ title, linkTitle, icon }) => {
 									return (
@@ -122,7 +119,7 @@ export const Footer: FC<CurrentTabProps> = ({ currentTab, handleOnView }) => {
 						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2904.9938868203412!2d42.68075131539982!3d43.27250388498218!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xfa9555d3e71ae999!2zNDPCsDE2JzIxLjAiTiA0MsKwNDAnNTguNiJF!5e0!3m2!1sru!2sru!4v1647419800631!5m2!1sru!2sru"
 						width="100%"
 						height="450"
-						style={{ border: 0 }}
+						style={{ border: 0, height: '100%' }}
 						allowFullScreen={true}
 						loading="lazy"
 						title={'Chalet_Botash_location'}

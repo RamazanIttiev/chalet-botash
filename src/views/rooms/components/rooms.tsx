@@ -8,7 +8,7 @@ export const Rooms: FC<RoomsProps> = ({ data }) => {
 	return (
 		<Grid container spacing={8} sx={{ justifyContent: 'center' }}>
 			{data.length === 0
-				? Array.from([1]).map((_, index) => <RoomsSkeleton key={index} />)
+				? Array.from([data.length]).map((_, index) => <RoomsSkeleton key={index} />)
 				: data.map(({ title, description, image, id, price }) => {
 						return (
 							<Grid

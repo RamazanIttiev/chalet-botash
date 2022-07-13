@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { RoomCardProps } from '../models/rooms.model';
 import Typography from '../../../components/Typography';
-import { Card, CardActionArea, CardActions, CardContent, CardMedia } from '@mui/material';
+import { Card, CardActionArea, CardContent, CardMedia } from '@mui/material';
 
 export const RoomCard: FC<RoomCardProps> = ({ title, description, image, price }) => {
 	return (
@@ -18,12 +18,14 @@ export const RoomCard: FC<RoomCardProps> = ({ title, description, image, price }
 						{title}
 					</Typography>
 				</CardContent>
-				<CardActions sx={{ justifyContent: 'space-between', p: 2 }}>
-					<Typography fontSize={16} variant="body2" color="text.secondary">
-						{price} ₽
-					</Typography>
-				</CardActions>
 			</CardActionArea>
+			<Typography
+				sx={{ justifyContent: 'space-between', p: 2 }}
+				fontSize={16}
+				variant="body2"
+				color="text.secondary">
+				{price} ₽
+			</Typography>
 		</Card>
 	);
 };
