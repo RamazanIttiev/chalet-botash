@@ -103,10 +103,6 @@ export const Footer: FC<CurrentTabProps> = ({ currentTab, handleOnView }) => {
 												...socialMediaStyle,
 											}}>
 											<img className={'linkIcon'} src={icon} alt={title} />
-											{/*<Box className={'linkTextGroup'} sx={{ display: 'flex', alignItems: 'center' }}>*/}
-											{/*	<ArrowBack sx={{ fontSize: '16px', mr: 1, background: 'none' }} />*/}
-											{/*	<span>WhatsApp</span>*/}
-											{/*</Box>*/}
 										</Box>
 									);
 								})}
@@ -116,12 +112,14 @@ export const Footer: FC<CurrentTabProps> = ({ currentTab, handleOnView }) => {
 				</Grid>
 				<Grid item xs={12} sm={6} md={6}>
 					<iframe
-						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2904.9938868203412!2d42.68075131539982!3d43.27250388498218!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xfa9555d3e71ae999!2zNDPCsDE2JzIxLjAiTiA0MsKwNDAnNTguNiJF!5e0!3m2!1sru!2sru!4v1647419800631!5m2!1sru!2sru"
-						width="100%"
-						height="450"
-						style={{ border: 0, height: '100%' }}
+						src="https://yandex.ru/map-widget/v1/?z=12&ol=biz&oid=151156063035"
+						style={{
+							width: '100%',
+							height: '100%',
+							minHeight: '500px',
+						}}
+						frameBorder="0"
 						allowFullScreen={true}
-						loading="lazy"
 						title={'Chalet_Botash_location'}
 					/>
 				</Grid>
