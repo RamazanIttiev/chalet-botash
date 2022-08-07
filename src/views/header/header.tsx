@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
-import { AppBar, Toolbar, useMediaQuery } from '@mui/material';
 import Box from '@mui/material/Box';
 import { MenuList } from './menu-list';
 import { MobileHeader } from './mobile-header';
-import { FooterData } from '../footer/footer.model';
+import { socialLinks } from '../../mocks/contacts.mock';
+import { AppBar, Toolbar, useMediaQuery } from '@mui/material';
 
 import Logo from '../../assets/Logo.svg';
 import { LinkStyled, StyledLogo } from './theme/header.styled';
@@ -11,10 +11,9 @@ import { socialMediaStyle } from '../footer/theme/footer.styled';
 
 interface HeaderProps {
 	currentTab: string;
-	socialsLinks: FooterData[];
 }
 
-export const Header: FC<HeaderProps> = ({ currentTab, socialsLinks }) => {
+export const Header: FC<HeaderProps> = ({ currentTab }) => {
 	const isDesktop = useMediaQuery('(min-width:769px)');
 	const [isOpened, setIsOpened] = React.useState(false);
 
@@ -29,7 +28,7 @@ export const Header: FC<HeaderProps> = ({ currentTab, socialsLinks }) => {
 
 		setIsOpened(open);
 	};
-	//filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7500%) hue-rotate(110deg) brightness(98%) contrast(108%);
+
 	return (
 		<AppBar
 			enableColorOnDark
@@ -75,12 +74,12 @@ export const Header: FC<HeaderProps> = ({ currentTab, socialsLinks }) => {
 							justifyContent: 'center',
 							ml: isDesktop ? 'auto' : 'auto',
 						}}>
-						{socialsLinks.map(({ title, linkTitle, icon }) => {
+						{socialLinks.map(({ title, link, icon, color }) => {
 							return (
 								<Box
 									component="a"
 									target={'_blank'}
-									href={linkTitle}
+									href={link}
 									sx={{
 										...socialMediaStyle,
 									}}>
@@ -92,7 +91,12 @@ export const Header: FC<HeaderProps> = ({ currentTab, socialsLinks }) => {
 											width: '38px !important',
 											height: '38px !important',
 											background: 'transparent !important',
-											filter: 'brightness(0) saturate(100%) invert(99%) sepia(98%) saturate(22%) hue-rotate(353deg) brightness(104%) contrast(100%)',
+											transition: 'all 0.3s ease',
+											filter: color,
+
+											'&:hover': {
+												filter: 'brightness(0) saturate(100%) invert(99%) sepia(1%) saturate(1434%) hue-rotate(279deg) brightness(118%) contrast(100%);',
+											},
 										}}
 										src={icon}
 										alt={title}

@@ -1,5 +1,5 @@
-import WhatsApp from '../assets/whatsapp-outlined.svg';
-import Instagram from '../assets/instagram-outlined.svg';
+import WhatsApp from '../assets/whatsapp.svg';
+import Instagram from '../assets/instagram.svg';
 import Telegram from '../assets/telegram.svg';
 
 export const contacts = [
@@ -31,15 +31,18 @@ export const socialLinks = [
 		title: 'WhatsApp',
 		link: 'https://wa.me/+79187240111',
 		icon: WhatsApp,
+		color: 'brightness(0) saturate(100%) invert(63%) sepia(8%) saturate(3309%) hue-rotate(94deg) brightness(104%) contrast(96%);',
 	},
 	{
 		title: 'Instagram',
 		link: 'https://instagram.com/chalet_botash?utm_medium=copy_link',
 		icon: Instagram,
+		color: 'brightness(0) saturate(100%) invert(26%) sepia(95%) saturate(2448%) hue-rotate(323deg) brightness(93%) contrast(89%)',
 	},
 	{
 		title: 'Telegram',
 		link: 'https://t.me/chalet_botash',
 		icon: Telegram,
+		color: 'brightness(0) saturate(100%) invert(31%) sepia(96%) saturate(1270%) hue-rotate(175deg) brightness(99%) contrast(101%);',
 	},
 ];
