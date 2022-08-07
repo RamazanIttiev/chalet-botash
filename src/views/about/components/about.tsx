@@ -13,8 +13,8 @@ export const About: FC<AboutProps> = ({ data }) => {
 	return (
 		<Grid container spacing={8} sx={{ justifyContent: 'center' }}>
 			{data.length === 0
-				? Array.from([data.length]).map(id => <AboutSkeleton key={id} id={id} />)
-				: data.map(({ title, image, text, id }) => {
+				? Array.from([1, 2, 3]).map(id => <AboutSkeleton key={id} id={id} />)
+				: data.map(({ title, image, description, id }) => {
 						return (
 							<Grid
 								item
@@ -58,7 +58,7 @@ export const About: FC<AboutProps> = ({ data }) => {
 										{title}
 									</Typography>
 									<Typography variant="h5" component={'p'} fontSize={16} lineHeight={1.6}>
-										{text}
+										{description}
 									</Typography>
 								</Box>
 							</Grid>

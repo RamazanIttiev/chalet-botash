@@ -1,6 +1,6 @@
 export interface AboutData {
 	id: number;
-	text: string;
 	title: string;
+	description: string;
 	image: string;
 }
