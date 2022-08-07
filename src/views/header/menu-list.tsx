@@ -16,6 +16,8 @@ export const MenuList: FC<MenuListProps> = ({ currentTab, isDesktop, toggleDrawe
 					? {
 							width: '55%',
 							display: 'flex',
+							position: 'absolute',
+							right: '20%',
 					  }
 					: {
 							p: 2,

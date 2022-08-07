@@ -13,7 +13,7 @@ interface MobileHeaderProps {
 export const MobileHeader: FC<MobileHeaderProps> = ({ toggleDrawer, isOpened, currentTab, isDesktop }) => {
 	return (
 		<React.Fragment>
-			<IconButton onClick={toggleDrawer(true)}>
+			<IconButton sx={{ order: isDesktop ? '' : 3 }} onClick={toggleDrawer(true)}>
 				<MenuIcon sx={{ color: '#fff' }} />
 			</IconButton>
 			<SwipeableDrawer anchor={'top'} open={isOpened} onClose={toggleDrawer(false)} onOpen={toggleDrawer(true)}>

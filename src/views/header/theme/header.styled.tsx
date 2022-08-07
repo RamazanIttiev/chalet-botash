@@ -44,7 +44,7 @@ export const LinkStyled = styled(Link).attrs({
 });
 
 export const StyledLogo = styled.img`
-	width: 100px;
+	width: 100%;
 	height: auto;
 	position: absolute;
 	top: -8px;

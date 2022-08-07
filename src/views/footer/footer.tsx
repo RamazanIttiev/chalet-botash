@@ -1,34 +1,24 @@
-import React, { FC, useEffect, useRef, useState } from 'react';
+import React, { FC, useRef } from 'react';
 import Box from '@mui/material/Box';
 import { Link } from '@mui/material';
 import Grid from '@mui/material/Grid';
-import { airtableBase } from '../../app';
 import { FooterData } from './footer.model';
 import Typography from '../../components/Typography';
-import { mapContactsData } from '../../services/mappers';
 import { CurrentTabProps } from '../../models/active-tab.model';
-import { useCustomIntersectionObserver } from '../../hooks/intersectionObserver';
+import { useCustomIntersectionObserver } from 'src/hooks/intersectionObserver';
 
 import { contactsStyle, socialMediaStyle } from './theme/footer.styled';
 
-export const Footer: FC<CurrentTabProps> = ({ currentTab, handleOnView }) => {
-	const [data, setData] = useState<FooterData[]>([]);
-	const socialsLinks = data.slice(4);
+interface FooterProps extends CurrentTabProps {
+	ref: React.MutableRefObject<null>;
+	contactsData: FooterData[];
+	socialsLinks: FooterData[];
+}
 
+export const Footer: FC<FooterProps> = ({ currentTab, handleOnView, contactsData, socialsLinks }) => {
 	const ref = useRef(null);
 
 	useCustomIntersectionObserver(ref, currentTab, handleOnView);
-
-	useEffect(() => {
-		airtableBase('Contacts')
-			.select({
-				view: 'Grid view',
-			})
-			.eachPage(records => {
-				// @ts-ignore
-				return setData(mapContactsData(records));
-			});
-	}, [data.length]);
 
 	return (
 		<Typography component="footer" marked="center" sx={{ backgroundColor: 'secondary.light', flexShrink: 0 }}>
@@ -68,7 +58,7 @@ export const Footer: FC<CurrentTabProps> = ({ currentTab, handleOnView }) => {
 								justifyContent: 'center',
 								paddingBottom: '16px',
 							}}>
-							{data.map(({ title, linkTitle, text }) => {
+							{contactsData.map(({ title, linkTitle, text }) => {
 								return (
 									<Box
 										component="a"
