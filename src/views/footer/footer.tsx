@@ -2,20 +2,18 @@ import React, { FC, useRef } from 'react';
 import Box from '@mui/material/Box';
 import { Link } from '@mui/material';
 import Grid from '@mui/material/Grid';
-import { FooterData } from './footer.model';
 import Typography from '../../components/Typography';
 import { CurrentTabProps } from '../../models/active-tab.model';
+import { contacts, socialLinks } from '../../mocks/contacts.mock';
 import { useCustomIntersectionObserver } from 'src/hooks/intersectionObserver';
 
 import { contactsStyle, socialMediaStyle } from './theme/footer.styled';
 
 interface FooterProps extends CurrentTabProps {
 	ref: React.MutableRefObject<null>;
-	contactsData: FooterData[];
-	socialsLinks: FooterData[];
 }
 
-export const Footer: FC<FooterProps> = ({ currentTab, handleOnView, contactsData, socialsLinks }) => {
+export const Footer: FC<FooterProps> = ({ currentTab, handleOnView }) => {
 	const ref = useRef(null);
 
 	useCustomIntersectionObserver(ref, currentTab, handleOnView);
@@ -38,7 +36,7 @@ export const Footer: FC<FooterProps> = ({ currentTab, handleOnView, contactsData
 						variant="h6"
 						underline="none"
 						color="inherit"
-						href="#home"
+						href="/"
 						sx={{ fontSize: 24, letterSpacing: 4, cursor: 'pointer', textAlign: 'center' }}>
 						Chalet Botash
 					</Link>
@@ -58,21 +56,21 @@ export const Footer: FC<FooterProps> = ({ currentTab, handleOnView, contactsData
 								justifyContent: 'center',
 								paddingBottom: '16px',
 							}}>
-							{contactsData.map(({ title, linkTitle, text }) => {
+							{contacts.map(({ title, link, description }) => {
 								return (
 									<Box
 										component="a"
 										target={'_blank'}
 										href={
 											title === 'Телефон'
-												? `tel:${linkTitle}`
+												? `tel:${link}`
 												: title === 'Почта'
-												? `mailto:${linkTitle}`
-												: linkTitle
+												? `mailto:${link}`
+												: link
 										}
 										sx={contactsStyle}>
 										<div>{title}</div>
-										<span>{text}</span>
+										<span>{description}</span>
 									</Box>
 								);
 							})}
@@ -83,12 +81,12 @@ export const Footer: FC<FooterProps> = ({ currentTab, handleOnView, contactsData
 									justifyContent: 'center',
 									margin: '0 auto',
 								}}>
-								{socialsLinks.map(({ title, linkTitle, icon }) => {
+								{socialLinks.map(({ title, link, icon }) => {
 									return (
 										<Box
 											component="a"
 											target={'_blank'}
-											href={linkTitle}
+											href={link}
 											sx={{
 												...socialMediaStyle,
 											}}>
