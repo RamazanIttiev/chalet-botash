@@ -77,6 +77,7 @@ export const Header: FC<HeaderProps> = ({ currentTab }) => {
 						{socialLinks.map(({ title, link, icon, color }) => {
 							return (
 								<Box
+									key={title}
 									component="a"
 									target={'_blank'}
 									href={link}

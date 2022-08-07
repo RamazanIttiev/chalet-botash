@@ -9,9 +9,7 @@ import { useCustomIntersectionObserver } from 'src/hooks/intersectionObserver';
 
 import { contactsStyle, socialMediaStyle } from './theme/footer.styled';
 
-interface FooterProps extends CurrentTabProps {
-	ref: React.MutableRefObject<null>;
-}
+interface FooterProps extends CurrentTabProps {}
 
 export const Footer: FC<FooterProps> = ({ currentTab, handleOnView }) => {
 	const ref = useRef(null);
@@ -19,12 +17,15 @@ export const Footer: FC<FooterProps> = ({ currentTab, handleOnView }) => {
 	useCustomIntersectionObserver(ref, currentTab, handleOnView);
 
 	return (
-		<Typography component="footer" marked="center" sx={{ backgroundColor: 'secondary.light', flexShrink: 0 }}>
+		<Typography
+			component="footer"
+			marked="center"
+			sx={{ backgroundColor: 'secondary.light', flexShrink: 0, scrollMarginTop: 64, pt: '32px' }}>
 			<Grid container id="contacts" ref={ref}>
 				<Grid
 					item
 					xs={12}
-					sm={6}
+					sm={12}
 					md={6}
 					sx={{
 						display: 'flex',
@@ -59,6 +60,7 @@ export const Footer: FC<FooterProps> = ({ currentTab, handleOnView }) => {
 							{contacts.map(({ title, link, description }) => {
 								return (
 									<Box
+										key={title}
 										component="a"
 										target={'_blank'}
 										href={
@@ -84,6 +86,7 @@ export const Footer: FC<FooterProps> = ({ currentTab, handleOnView }) => {
 								{socialLinks.map(({ title, link, icon }) => {
 									return (
 										<Box
+											key={title}
 											component="a"
 											target={'_blank'}
 											href={link}
@@ -98,7 +101,7 @@ export const Footer: FC<FooterProps> = ({ currentTab, handleOnView }) => {
 						</Box>
 					</Box>
 				</Grid>
-				<Grid item xs={12} sm={6} md={6}>
+				<Grid item xs={12} sm={12} md={6}>
 					<iframe
 						src="https://yandex.ru/map-widget/v1/?z=12&ol=biz&oid=151156063035"
 						style={{
