@@ -13,7 +13,7 @@ export const GalleryContainer: FC<{ handleOnView: (tabId: string) => void; curre
 }) => {
 	const imagesToShow = 6;
 	const [data, setData] = useState<GalleryData[]>([]);
-	const [currentIndex, setCurrentIndex] = useState(0);
+	const [currentIndex, setCurrentIndex] = useState(1);
 	const [isModalOpen, setIsModalOpen] = useState(false);
 
 	const ref = useRef(null);

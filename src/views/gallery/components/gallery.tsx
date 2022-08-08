@@ -1,13 +1,12 @@
 import React, { FC } from 'react';
-import { Box } from '@mui/system';
-import { Grid, Modal } from '@mui/material';
 import { GalleryData } from '../galary.model';
 import { GalleryCarousel } from './gallery-carousel';
 import Typography from '../../../components/Typography';
 import { CurrentTabProps } from '../../../models/active-tab.model';
-
-import theme from '../../../theme';
+import { Grid, Modal } from '@mui/material';
 import { ImageBackdrop, ImageIconButton } from '../theme/gallery.styled';
+import { Box } from '@mui/system';
+import theme from '../../../theme';
 
 interface GalleryProps extends CurrentTabProps {
 	isModalOpen: boolean;
@@ -36,7 +35,7 @@ export const Gallery: FC<GalleryProps> = ({
 			{screenWidth && screenWidth >= 480 ? (
 				<Grid container spacing={1}>
 					{images.map(({ id, image }, index) => (
-						<Grid item md={4} sm={4} xs={12}>
+						<Grid item md={4} sm={4} xs={12} key={id}>
 							<ImageIconButton
 								aria-label={`Gallery_image_${id}`}
 								key={id}
@@ -87,23 +86,30 @@ export const Gallery: FC<GalleryProps> = ({
 							</ImageIconButton>
 						</Grid>
 					))}
+
+					<Modal
+						open={isModalOpen}
+						onClose={toggleModal}
+						sx={{
+							width: '60%',
+							height: '70%',
+							margin: '0 auto',
+							top: '15%',
+
+							[theme.breakpoints.down('md')]: {
+								width: '95%',
+							},
+						}}>
+						<GalleryCarousel images={sliderImages} currentIndex={currentIndex} />
+					</Modal>
 				</Grid>
 			) : (
-				<Modal
-					open={isModalOpen}
-					onClose={toggleModal}
-					sx={{
-						width: '60%',
-						height: '70%',
-						margin: '0 auto',
-						top: '15%',
-
-						[theme.breakpoints.down('md')]: {
-							width: '95%',
-						},
-					}}>
-					<GalleryCarousel images={sliderImages} currentIndex={currentIndex} />
-				</Modal>
+				<GalleryCarousel
+					images={sliderImages}
+					currentIndex={currentIndex}
+					height={400}
+					mt={screen.width && screen.width >= 480 ? 0 : '64px'}
+				/>
 			)}
 		</React.Fragment>
 	);
