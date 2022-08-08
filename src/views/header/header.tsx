@@ -89,8 +89,8 @@ export const Header: FC<HeaderProps> = ({ currentTab }) => {
 										className={'linkIcon'}
 										sx={{
 											mr: '0 !important',
-											width: '38px !important',
-											height: '38px !important',
+											width: '48px !important',
+											height: '48px !important',
 											background: 'transparent !important',
 											transition: 'all 0.3s ease',
 											filter: color,

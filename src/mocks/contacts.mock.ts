@@ -1,6 +1,7 @@
 import WhatsApp from '../assets/whatsapp.svg';
 import Instagram from '../assets/instagram.svg';
 import Telegram from '../assets/telegram.svg';
+import Location from '../assets/Location.svg';
 
 export const contacts = [
 	{
@@ -44,5 +45,11 @@ export const socialLinks = [
 		link: 'https://t.me/chalet_botash',
 		icon: Telegram,
 		color: 'brightness(0) saturate(100%) invert(31%) sepia(96%) saturate(1270%) hue-rotate(175deg) brightness(99%) contrast(101%);',
+	},
+	{
+		title: 'Location',
+		link: 'https://yandex.ru/map-widget/v1/?z=12&ol=biz&oid=151156063035',
+		icon: Location,
+		color: 'brightness(0) saturate(100%) invert(41%) sepia(46%) saturate(685%) hue-rotate(316deg) brightness(103%) contrast(97%);',
 	},
 ];

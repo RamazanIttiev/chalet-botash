@@ -81,7 +81,7 @@ export const Footer: FC<FooterProps> = ({ currentTab, handleOnView }) => {
 									display: 'flex',
 									alignItems: 'center',
 									justifyContent: 'center',
-									margin: '0 auto',
+									margin: '16px auto',
 								}}>
 								{socialLinks.map(({ title, link, icon }) => {
 									return (

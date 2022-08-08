@@ -16,12 +16,6 @@ export const socialMediaStyle = {
 			backgroundColor: 'warning.dark',
 		},
 	},
-	'& .linkTextGroup': {
-		transition: 'all 0.3s',
-	},
-	'&:hover .linkTextGroup': {
-		transform: 'translateX(24px)',
-	},
 };
 
 export const contactsStyle = {
