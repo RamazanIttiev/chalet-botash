@@ -5,10 +5,13 @@ import { Home } from './pages/Home';
 import { Header } from './views/header/header';
 import { Footer } from './views/footer/footer';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import SwiperCore, { Lazy } from 'swiper';
 
 export const airtableBase = new Airtable({
 	apiKey: process.env.REACT_APP_AIRTABLE_PRIVATE_KEY,
 }).base('appODUEXCW5oqxyCY');
+
+SwiperCore.use([Lazy]);
 
 const App = () => {
 	const [currentTab, setCurrentTab] = useState('');

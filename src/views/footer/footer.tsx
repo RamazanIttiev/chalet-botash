@@ -103,6 +103,7 @@ export const Footer: FC<FooterProps> = ({ currentTab, handleOnView }) => {
 				</Grid>
 				<Grid item xs={12} sm={12} md={6}>
 					<iframe
+						loading="lazy"
 						src="https://yandex.ru/map-widget/v1/?z=12&ol=biz&oid=151156063035"
 						style={{
 							width: '100%',

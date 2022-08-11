@@ -79,9 +79,11 @@ export const Gallery: FC<GalleryProps> = ({
 										justifyContent: 'center',
 										color: 'common.white',
 									}}>
-									<Typography component="h3" variant="h6" color="inherit">
-										{index === 5 && '+ еще'}
-									</Typography>
+									{index === 5 && (
+										<Typography component="h3" variant="h6" color="inherit">
+											+ еще
+										</Typography>
+									)}
 								</Box>
 							</ImageIconButton>
 						</Grid>

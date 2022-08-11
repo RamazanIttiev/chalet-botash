@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import { Box } from '@mui/material';
+import { Box, CircularProgress } from '@mui/material';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper';
 import { GalleryData } from '../galary.model';
@@ -25,17 +25,24 @@ export const GalleryCarousel: FC<ImageCarouselProps> = ({ currentIndex, images, 
 			}}
 			navigation={true}
 			initialSlide={currentIndex}
-			modules={[Navigation, Pagination]}>
+			modules={[Navigation, Pagination]}
+			preloadImages={false}
+			lazy={true}>
 			{images.map(({ image }) => {
 				return (
 					<SwiperSlide>
 						<Box
 							component={'img'}
-							src={image}
-							sx={{
+							className="swiper-lazy"
+							data-src={image}
+							style={{
 								height: '100%',
+								width: 'auto',
 							}}
 						/>
+						<div className="swiper-lazy-preloader">
+							<CircularProgress color="secondary" />
+						</div>
 					</SwiperSlide>
 				);
 			})}
