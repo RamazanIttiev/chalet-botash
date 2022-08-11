@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+User-agent: Yandex
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+Sitemap: https://chalet-botash.ru/sitemap.xml
