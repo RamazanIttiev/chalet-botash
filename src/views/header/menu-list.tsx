@@ -41,6 +41,11 @@ export const MenuList: FC<MenuListProps> = ({ currentTab, isDesktop, toggleDrawe
 				</LinkStyled>
 			</ListItem>
 			<ListItem sx={{ p: 0 }}>
+				<LinkStyled onClick={toggleDrawer(false)} $currentTab={currentTab === 'reviews'} href="#reviews">
+					Отзывы
+				</LinkStyled>
+			</ListItem>
+			<ListItem sx={{ p: 0 }}>
 				<LinkStyled onClick={toggleDrawer(false)} $currentTab={currentTab === 'contacts'} href="#contacts">
 					Контакты
 				</LinkStyled>

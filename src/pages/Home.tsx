@@ -20,6 +20,12 @@ const RoomsContainer = lazy(() =>
 	})),
 );
 
+const Reviews = lazy(() =>
+	import('../views/reviews/reviews').then(({ Reviews }) => ({
+		default: Reviews,
+	})),
+);
+
 interface HomeProps {
 	currentTab: string;
 	handleOnView: (tabId: string) => void;
@@ -32,6 +38,7 @@ export const Home: FC<HomeProps> = ({ currentTab, handleOnView }) => {
 			<AboutContainer currentTab={currentTab} handleOnView={handleOnView} />
 			<GalleryContainer currentTab={currentTab} handleOnView={handleOnView} />
 			<RoomsContainer currentTab={currentTab} handleOnView={handleOnView} />
+			<Reviews currentTab={currentTab} handleOnView={handleOnView} />
 		</Box>
 	);
 };

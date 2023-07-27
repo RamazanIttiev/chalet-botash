@@ -20,7 +20,7 @@ export const Footer: FC<FooterProps> = ({ currentTab, handleOnView }) => {
 		<Typography
 			component="footer"
 			marked="center"
-			sx={{ backgroundColor: 'secondary.light', flexShrink: 0, scrollMarginTop: 64, pt: '32px' }}>
+			sx={{ backgroundColor: '#fff', flexShrink: 0, scrollMarginTop: 64 }}>
 			<Grid container id="contacts" ref={ref}>
 				<Grid
 					item
@@ -32,6 +32,7 @@ export const Footer: FC<FooterProps> = ({ currentTab, handleOnView }) => {
 						flexDirection: 'column',
 						alignItems: 'center',
 						position: 'relative',
+						pt: '32px',
 					}}>
 					<Link
 						variant="h6"
