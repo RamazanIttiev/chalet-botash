@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import Airtable from 'airtable';
-import Error from './pages/Error';
 import { Home } from './pages/Home';
 import { Header } from './views/header/header';
 import { Footer } from './views/footer/footer';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import SwiperCore, { Lazy } from 'swiper';
 
 export const airtableBase = new Airtable({
@@ -21,14 +19,11 @@ const App = () => {
 	};
 
 	return (
-		<BrowserRouter>
+		<React.Fragment>
 			<Header currentTab={currentTab} />
-			<Routes>
-				<Route path="/" element={<Home currentTab={currentTab} handleOnView={handleOnView} />} />
-				<Route path="*" element={<Error />} />
-			</Routes>
+			<Home currentTab={currentTab} handleOnView={handleOnView} />
 			<Footer currentTab={currentTab} handleOnView={handleOnView} />
-		</BrowserRouter>
+		</React.Fragment>
 	);
 };
 

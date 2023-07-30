@@ -5,7 +5,7 @@ import theme from '../../theme';
 import Typography from '../../components/Typography';
 import { CurrentTabProps } from '../../models/active-tab.model';
 
-export const Reviews = ({ currentTab, handleOnView }: CurrentTabProps) => {
+export const ReviewsContainer = ({ currentTab, handleOnView }: CurrentTabProps) => {
 	const ref = useRef(null);
 
 	useCustomIntersectionObserver(ref, currentTab, handleOnView);
