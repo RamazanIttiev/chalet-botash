@@ -37,19 +37,30 @@ export const ReviewsContainer = ({ currentTab, handleOnView }: CurrentTabProps) 
 			<Box
 				component={'iframe'}
 				sx={{
-					width: '95%',
+					width: '90vw',
 					height: '100%',
 					minHeight: '500px',
 					border: '1px solid #e6e6e6',
 					borderRadius: '8px',
 					boxSizing: 'border-box',
 
+					'& body': {
+						background: '#fff',
+						display: 'flex',
+						alignItems: 'center',
+						justifyContent: 'center',
+					},
+
 					[theme.breakpoints.up('md')]: {
-						width: '65%',
+						width: '60vw',
 					},
 
 					[theme.breakpoints.up('lg')]: {
-						width: '50%',
+						width: '45vw',
+					},
+
+					[theme.breakpoints.up('xl')]: {
+						width: '35vw',
 					},
 				}}
 				src="https://yandex.ru/maps-reviews-widget/151156063035?comments"></Box>

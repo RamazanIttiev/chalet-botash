@@ -41,8 +41,8 @@ const rawTheme = createTheme({
 			xs: 0,
 			sm: 481,
 			md: 769,
-			lg: 1024,
-			xl: 1280,
+			lg: 1280,
+			xl: 1440,
 		},
 	},
 });
