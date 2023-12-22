@@ -15,7 +15,7 @@ export const RoomCard: FC<RoomCardProps> = ({ title, description, images, price 
 			}}>
 			<CardActionArea>
 				{images.length === 1 ? (
-					<CardMedia component="img" alt={title} image={images[0].url} height={400} />
+					<CardMedia component="img" alt={title} image={images[0].url} height={300} />
 				) : (
 					<Swiper
 						className="mySwiper"
@@ -51,27 +51,26 @@ export const RoomCard: FC<RoomCardProps> = ({ title, description, images, price 
 						})}
 					</Swiper>
 				)}
-
-				<CardContent>
-					<Typography gutterBottom variant="h5" component="div">
-						{title}
-					</Typography>
-				</CardContent>
 			</CardActionArea>
-			<Typography
-				sx={{ justifyContent: 'space-between', p: 2 }}
-				fontSize={14}
-				variant="body1"
-				color="text.secondary">
-				{description}
-			</Typography>
-			<Typography
-				sx={{ justifyContent: 'space-between', p: 2, fontWeight: 800 }}
-				fontSize={21}
-				variant="body2"
-				color="text.secondary">
-				{price} ₽
-			</Typography>
+			<CardContent>
+				<Typography gutterBottom variant="h5" component="div">
+					{title}
+				</Typography>
+				<Typography
+					sx={{ justifyContent: 'space-between', mt: 6 }}
+					fontSize={14}
+					variant="body1"
+					color="text.secondary">
+					{description}
+				</Typography>
+				<Typography
+					sx={{ justifyContent: 'space-between', mt: 1, fontWeight: 800 }}
+					fontSize={21}
+					variant="body2"
+					color="text.secondary">
+					{price} ₽
+				</Typography>
+			</CardContent>
 		</Card>
 	);
 };
