@@ -1,9 +1,11 @@
 import React, { FC } from 'react';
 import { RoomCardProps } from '../models/rooms.model';
 import Typography from '../../../components/Typography';
-import { Card, CardActionArea, CardContent, CardMedia } from '@mui/material';
+import { Box, Card, CardActionArea, CardContent, CardMedia, CircularProgress } from '@mui/material';
+import { Navigation, Pagination } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
-export const RoomCard: FC<RoomCardProps> = ({ title, description, image, price }) => {
+export const RoomCard: FC<RoomCardProps> = ({ title, description, images, price }) => {
 	return (
 		<Card
 			sx={{
@@ -12,7 +14,44 @@ export const RoomCard: FC<RoomCardProps> = ({ title, description, image, price }
 				position: 'relative',
 			}}>
 			<CardActionArea>
-				<CardMedia component="img" alt={title} image={image} height={400} />
+				{images.length === 1 ? (
+					<CardMedia component="img" alt={title} image={images[0].url} height={400} />
+				) : (
+					<Swiper
+						className="mySwiper"
+						slidesPerView={1}
+						style={{ height: '300px' }}
+						spaceBetween={148}
+						loop={true}
+						pagination={{
+							clickable: true,
+						}}
+						navigation={true}
+						modules={[Navigation, Pagination]}
+						preloadImages={false}
+						lazy={true}>
+						{images?.map(({ url }, i) => {
+							return (
+								<SwiperSlide>
+									<Box
+										component={'img'}
+										alt={`gallery image ${i}`}
+										className="swiper-lazy"
+										data-src={url}
+										style={{
+											height: '100%',
+											width: 'auto',
+										}}
+									/>
+									<div className="swiper-lazy-preloader">
+										<CircularProgress color="secondary" />
+									</div>
+								</SwiperSlide>
+							);
+						})}
+					</Swiper>
+				)}
+
 				<CardContent>
 					<Typography gutterBottom variant="h5" component="div">
 						{title}
@@ -21,7 +60,14 @@ export const RoomCard: FC<RoomCardProps> = ({ title, description, image, price }
 			</CardActionArea>
 			<Typography
 				sx={{ justifyContent: 'space-between', p: 2 }}
-				fontSize={16}
+				fontSize={14}
+				variant="body1"
+				color="text.secondary">
+				{description}
+			</Typography>
+			<Typography
+				sx={{ justifyContent: 'space-between', p: 2, fontWeight: 800 }}
+				fontSize={21}
 				variant="body2"
 				color="text.secondary">
 				{price} ₽

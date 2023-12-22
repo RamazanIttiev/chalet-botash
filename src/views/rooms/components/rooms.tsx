@@ -5,11 +5,12 @@ import { RoomsProps } from '../models/rooms.model';
 import { RoomCard } from './room-card';
 
 export const Rooms: FC<RoomsProps> = ({ data }) => {
+	console.log(data);
 	return (
 		<Grid container spacing={8} sx={{ justifyContent: 'center' }}>
 			{data.length === 0
 				? Array.from([data.length]).map((_, index) => <RoomsSkeleton key={index} />)
-				: data.map(({ title, description, image, id, price }) => {
+				: data.map(({ title, description, images, id, price }) => {
 						return (
 							<Grid
 								key={id}
@@ -20,7 +21,7 @@ export const Rooms: FC<RoomsProps> = ({ data }) => {
 									justifyContent: 'center',
 									display: 'flex',
 								}}>
-								<RoomCard title={title} description={description} image={image} price={price} />
+								<RoomCard title={title} description={description} images={images} price={price} />
 							</Grid>
 						);
 				  })}

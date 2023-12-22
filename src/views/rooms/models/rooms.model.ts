@@ -1,7 +1,7 @@
 export interface RoomCardProps {
 	id?: number;
 	title: string;
-	image: string;
+	images: { url: string }[];
 	price: number;
 	description: string;
 }

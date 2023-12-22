@@ -13,5 +13,5 @@ export const mapRoomsData = (galleryData: Records<FieldSet>) =>
 		title: fields.title,
 		price: fields.price,
 		description: fields.description,
-		image: fields.image && fields.image[0].url,
+		images: fields.image && fields.image,
 	}));

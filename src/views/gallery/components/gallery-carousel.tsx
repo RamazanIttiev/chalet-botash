@@ -28,12 +28,11 @@ export const GalleryCarousel: FC<ImageCarouselProps> = ({ currentIndex, images, 
 			modules={[Navigation, Pagination]}
 			preloadImages={false}
 			lazy={true}>
-			{images.map(({ image }, i) => {
+			{images.map(({ image }) => {
 				return (
 					<SwiperSlide>
 						<Box
 							component={'img'}
-							alt={`gallery image ${i}`}
 							className="swiper-lazy"
 							data-src={image}
 							style={{
