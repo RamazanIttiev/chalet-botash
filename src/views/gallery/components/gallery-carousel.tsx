@@ -30,7 +30,7 @@ export const GalleryCarousel: FC<ImageCarouselProps> = ({ currentIndex, images, 
 			lazy={true}>
 			{images.map(({ image }) => {
 				return (
-					<SwiperSlide>
+					<SwiperSlide key={image}>
 						<Box
 							component={'img'}
 							className="swiper-lazy"

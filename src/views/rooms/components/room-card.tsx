@@ -15,7 +15,7 @@ export const RoomCard: FC<RoomCardProps> = ({ title, description, images, price 
 			}}>
 			<CardActionArea>
 				{images.length === 1 ? (
-					<CardMedia component="img" alt={title} image={images[0].url} height={300} />
+					<CardMedia key={title} component="img" alt={title} image={images[0].url} height={300} />
 				) : (
 					<Swiper
 						className="mySwiper"
@@ -32,7 +32,7 @@ export const RoomCard: FC<RoomCardProps> = ({ title, description, images, price 
 						lazy={true}>
 						{images?.map(({ url }, i) => {
 							return (
-								<SwiperSlide>
+								<SwiperSlide key={url}>
 									<Box
 										component={'img'}
 										alt={`gallery image ${i}`}

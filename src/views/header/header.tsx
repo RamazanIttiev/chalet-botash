@@ -1,13 +1,15 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import { MenuList } from './menu-list';
 import { MobileHeader } from './mobile-header';
-import { socialLinks } from '../../mocks/contacts.mock';
 import { AppBar, Toolbar, useMediaQuery } from '@mui/material';
 
-import Logo from '../../assets/Logo.svg';
 import { LinkStyled, StyledLogo } from './theme/header.styled';
 import { socialMediaStyle } from '../footer/theme/footer.styled';
+import { airtableBase } from '../../app';
+import { mapSocialsData } from '../../services/mappers';
+
+import Logo from '../../assets/Logo.svg';
 
 interface HeaderProps {
 	currentTab: string;
@@ -16,6 +18,19 @@ interface HeaderProps {
 export const Header: FC<HeaderProps> = ({ currentTab }) => {
 	const isDesktop = useMediaQuery('(min-width:769px)');
 	const [isOpened, setIsOpened] = React.useState(false);
+
+	const [data, setData] = useState([]);
+
+	useEffect(() => {
+		airtableBase('Socials')
+			.select({
+				view: 'Grid view',
+			})
+			.eachPage(records => {
+				// @ts-ignore
+				return setData(mapSocialsData(records));
+			});
+	}, []);
 
 	const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
 		if (
@@ -74,7 +89,7 @@ export const Header: FC<HeaderProps> = ({ currentTab }) => {
 							justifyContent: 'center',
 							ml: isDesktop ? 'auto' : 'auto',
 						}}>
-						{socialLinks.map(({ title, link, icon, color }) => {
+						{data.map(({ title, link, icon, color }) => {
 							return (
 								<Box
 									key={title}

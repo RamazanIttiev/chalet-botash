@@ -23,7 +23,7 @@ export const RoomsContainer: FC<CurrentTabProps> = ({ handleOnView, currentTab }
 				// @ts-ignore
 				return setData(mapRoomsData(records));
 			});
-	}, [data.length]);
+	}, []);
 
 	return (
 		<Box

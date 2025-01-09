@@ -1,17 +1,32 @@
-import React, { FC, useRef } from 'react';
+import React, { FC, useEffect, useRef, useState } from 'react';
 import theme from '../../../theme';
 import Box from '@mui/material/Box';
 import { About } from '../components/about';
 import Container from '@mui/material/Container';
-import { aboutMock } from '../../../mocks/about.mock';
 import Typography from '../../../components/Typography';
 import { CurrentTabProps } from '../../../models/active-tab.model';
 import { useCustomIntersectionObserver } from '../../../hooks/intersectionObserver';
+import { airtableBase } from '../../../app';
+import { mapAboutData } from '../../../services/mappers';
+import { AboutData } from '../about.model';
 
 export const AboutContainer: FC<CurrentTabProps> = ({ currentTab, handleOnView }) => {
 	const ref = useRef(null);
 
+	const [data, setData] = useState<AboutData[]>([]);
+
 	useCustomIntersectionObserver(ref, currentTab, handleOnView);
+
+	useEffect(() => {
+		airtableBase('About')
+			.select({
+				view: 'Grid view',
+			})
+			.eachPage(records => {
+				// @ts-ignore
+				return setData(mapAboutData(records));
+			});
+	}, []);
 
 	return (
 		<Box
@@ -38,7 +53,7 @@ export const AboutContainer: FC<CurrentTabProps> = ({ currentTab, handleOnView }
 					position: 'relative',
 					backgroundColor: 'secondary.light',
 				}}>
-				<About data={aboutMock} />
+				<About data={data} />
 			</Container>
 		</Box>
 	);

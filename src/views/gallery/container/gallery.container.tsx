@@ -30,7 +30,7 @@ export const GalleryContainer: FC<{ handleOnView: (tabId: string) => void; curre
 				// @ts-ignore
 				return setData(mapGalleryData(records));
 			});
-	}, [data.length]);
+	}, []);
 
 	const toggleModal = () => {
 		setIsModalOpen(!isModalOpen);

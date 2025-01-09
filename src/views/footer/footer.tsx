@@ -1,11 +1,13 @@
-import React, { FC, useRef } from 'react';
+import React, { FC, useEffect, useRef, useState } from 'react';
 import Box from '@mui/material/Box';
 import { Link } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import Typography from '../../components/Typography';
 import { CurrentTabProps } from '../../models/active-tab.model';
-import { contacts, socialLinks } from '../../mocks/contacts.mock';
 import { useCustomIntersectionObserver } from 'src/hooks/intersectionObserver';
+
+import { airtableBase } from '../../app';
+import { mapContactsData, mapSocialsData } from '../../services/mappers';
 
 import { contactsStyle, socialMediaStyle } from './theme/footer.styled';
 
@@ -14,7 +16,32 @@ interface FooterProps extends CurrentTabProps {}
 export const Footer: FC<FooterProps> = ({ currentTab, handleOnView }) => {
 	const ref = useRef(null);
 
+	const [data, setData] = useState([]);
+	const [socialLinks, setSocialLinks] = useState([]);
+
 	useCustomIntersectionObserver(ref, currentTab, handleOnView);
+
+	useEffect(() => {
+		airtableBase('Contacts')
+			.select({
+				view: 'Grid view',
+			})
+			.eachPage(records => {
+				// @ts-ignore
+				return setData(mapContactsData(records));
+			});
+	}, []);
+
+	useEffect(() => {
+		airtableBase('Socials')
+			.select({
+				view: 'Grid view',
+			})
+			.eachPage(records => {
+				// @ts-ignore
+				return setSocialLinks(mapSocialsData(records));
+			});
+	}, []);
 
 	return (
 		<Typography
@@ -58,7 +85,7 @@ export const Footer: FC<FooterProps> = ({ currentTab, handleOnView }) => {
 								justifyContent: 'center',
 								paddingBottom: '16px',
 							}}>
-							{contacts.map(({ title, link, description }) => {
+							{data.map(({ title, link, description }) => {
 								return (
 									<Box
 										key={title}
@@ -78,6 +105,7 @@ export const Footer: FC<FooterProps> = ({ currentTab, handleOnView }) => {
 								);
 							})}
 							<Box
+								key={1}
 								sx={{
 									display: 'flex',
 									alignItems: 'center',

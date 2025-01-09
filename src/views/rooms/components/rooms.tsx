@@ -5,7 +5,6 @@ import { RoomsProps } from '../models/rooms.model';
 import { RoomCard } from './room-card';
 
 export const Rooms: FC<RoomsProps> = ({ data }) => {
-	console.log(data);
 	return (
 		<Grid container spacing={8} sx={{ justifyContent: 'center' }}>
 			{data.length === 0
