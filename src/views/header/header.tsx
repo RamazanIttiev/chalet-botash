@@ -75,12 +75,14 @@ export const Header: FC<HeaderProps> = ({ currentTab }) => {
 					{isDesktop ? (
 						<MenuList toggleDrawer={toggleDrawer} isDesktop={isDesktop} currentTab={currentTab} />
 					) : (
-						<MobileHeader
-							isOpened={isOpened}
-							isDesktop={isDesktop}
-							currentTab={currentTab}
-							toggleDrawer={toggleDrawer}
-						/>
+						window.location.pathname === '/' && (
+							<MobileHeader
+								isOpened={isOpened}
+								isDesktop={isDesktop}
+								currentTab={currentTab}
+								toggleDrawer={toggleDrawer}
+							/>
+						)
 					)}
 					<Box
 						sx={{
