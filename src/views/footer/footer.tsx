@@ -42,7 +42,7 @@ export const Footer: FC<FooterProps> = ({ currentTab, handleOnView }) => {
 				return setSocialLinks(mapSocialsData(records));
 			});
 	}, []);
-
+	console.log(data);
 	return (
 		<Typography
 			component="footer"
@@ -87,18 +87,7 @@ export const Footer: FC<FooterProps> = ({ currentTab, handleOnView }) => {
 							}}>
 							{data.map(({ title, link, description }) => {
 								return (
-									<Box
-										key={title}
-										component="a"
-										target={'_blank'}
-										href={
-											title === 'Телефон'
-												? `tel:${link}`
-												: title === 'Почта'
-												? `mailto:${link}`
-												: link
-										}
-										sx={contactsStyle}>
+									<Box key={title} component="a" target={'_blank'} href={link} sx={contactsStyle}>
 										<div>{title}</div>
 										<span>{description}</span>
 									</Box>
