@@ -1,11 +1,11 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
 import { Container } from '@mui/material';
-import { airtableBase } from '../../../app';
 import { GalleryData } from '../galary.model';
 import { Gallery } from '../components/gallery';
 import { mapGalleryData } from '../../../services/mappers';
 import { useWindowDimensions } from '../../../hooks/useWindowDeminision';
 import { useCustomIntersectionObserver } from '../../../hooks/intersectionObserver';
+import { fetchAirtableRecords } from '../../../api';
 
 export const GalleryContainer: FC<{ handleOnView: (tabId: string) => void; currentTab: string }> = ({
 	currentTab,
@@ -22,14 +22,20 @@ export const GalleryContainer: FC<{ handleOnView: (tabId: string) => void; curre
 	useCustomIntersectionObserver(ref, currentTab, handleOnView);
 
 	useEffect(() => {
-		airtableBase('Gallery')
-			.select({
-				view: 'Grid view',
-			})
-			.eachPage(records => {
+		const fetchPromoData = async () => {
+			try {
+				const records = await fetchAirtableRecords({
+					tableName: 'Gallery',
+				});
+
 				// @ts-ignore
 				return setData(mapGalleryData(records));
-			});
+			} catch (error) {
+				console.error('Error fetching promo data:', error);
+			}
+		};
+
+		fetchPromoData().catch(console.error);
 	}, []);
 
 	const toggleModal = () => {

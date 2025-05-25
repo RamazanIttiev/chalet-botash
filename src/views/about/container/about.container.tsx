@@ -6,9 +6,9 @@ import Container from '@mui/material/Container';
 import Typography from '../../../components/Typography';
 import { CurrentTabProps } from '../../../models/active-tab.model';
 import { useCustomIntersectionObserver } from '../../../hooks/intersectionObserver';
-import { airtableBase } from '../../../app';
 import { mapAboutData } from '../../../services/mappers';
 import { AboutData } from '../about.model';
+import { fetchAirtableRecords } from '../../../api';
 
 export const AboutContainer: FC<CurrentTabProps> = ({ currentTab, handleOnView }) => {
 	const ref = useRef(null);
@@ -18,14 +18,19 @@ export const AboutContainer: FC<CurrentTabProps> = ({ currentTab, handleOnView }
 	useCustomIntersectionObserver(ref, currentTab, handleOnView);
 
 	useEffect(() => {
-		airtableBase('About')
-			.select({
-				view: 'Grid view',
-			})
-			.eachPage(records => {
-				// @ts-ignore
-				return setData(mapAboutData(records));
-			});
+		const fetchPromoData = async () => {
+			try {
+				const records = await fetchAirtableRecords({
+					tableName: 'About',
+				});
+
+				setData(mapAboutData(records));
+			} catch (error) {
+				console.error('Error fetching promo data:', error);
+			}
+		};
+
+		fetchPromoData().catch(console.error);
 	}, []);
 
 	return (

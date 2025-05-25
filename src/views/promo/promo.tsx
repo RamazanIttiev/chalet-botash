@@ -1,8 +1,8 @@
 import React, { FC, useEffect, useState } from 'react';
 import Typography from '../../components/Typography';
 import { PromoLayout } from './promo-layout';
-import { airtableBase } from '../../app';
 import { mapPromoData } from '../../services/mappers';
+import { fetchAirtableRecords } from '../../api';
 
 interface PromoProps {
 	handleOnView: (tabId: string) => void;
@@ -19,14 +19,19 @@ export const Promo: FC<PromoProps> = ({ currentTab, handleOnView }) => {
 	const [data, setData] = useState<PromoData>();
 
 	useEffect(() => {
-		airtableBase('Promo')
-			.select({
-				view: 'Grid view',
-			})
-			.eachPage(records => {
-				// @ts-ignore
-				return setData(mapPromoData(records[0].fields));
-			});
+		const fetchPromoData = async () => {
+			try {
+				const records = await fetchAirtableRecords({
+					tableName: 'Promo',
+				});
+
+				setData(mapPromoData(records[0].fields));
+			} catch (error) {
+				console.error('Error fetching promo data:', error);
+			}
+		};
+
+		fetchPromoData().catch(console.error);
 	}, []);
 
 	return (

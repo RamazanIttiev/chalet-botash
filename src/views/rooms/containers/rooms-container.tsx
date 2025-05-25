@@ -1,12 +1,12 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
 import { Rooms } from '../components/rooms';
-import { airtableBase } from '../../../app';
 import { Box, Container } from '@mui/material';
 import { RoomCardProps } from '../models/rooms.model';
 import Typography from '../../../components/Typography';
 import { mapRoomsData } from '../../../services/mappers';
 import { CurrentTabProps } from '../../../models/active-tab.model';
 import { useCustomIntersectionObserver } from '../../../hooks/intersectionObserver';
+import { fetchAirtableRecords } from '../../../api';
 
 export const RoomsContainer: FC<CurrentTabProps> = ({ handleOnView, currentTab }) => {
 	const [data, setData] = useState<RoomCardProps[]>([]);
@@ -15,14 +15,20 @@ export const RoomsContainer: FC<CurrentTabProps> = ({ handleOnView, currentTab }
 	useCustomIntersectionObserver(ref, currentTab, handleOnView);
 
 	useEffect(() => {
-		airtableBase('Rooms')
-			.select({
-				view: 'Grid view',
-			})
-			.eachPage(records => {
+		const fetchPromoData = async () => {
+			try {
+				const records = await fetchAirtableRecords({
+					tableName: 'Rooms',
+				});
+
 				// @ts-ignore
 				return setData(mapRoomsData(records));
-			});
+			} catch (error) {
+				console.error('Error fetching promo data:', error);
+			}
+		};
+
+		fetchPromoData().catch(console.error);
 	}, []);
 
 	return (

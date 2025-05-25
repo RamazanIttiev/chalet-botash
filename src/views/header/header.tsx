@@ -6,10 +6,10 @@ import { AppBar, Toolbar, useMediaQuery } from '@mui/material';
 
 import { LinkStyled, StyledLogo } from './theme/header.styled';
 import { socialMediaStyle } from '../footer/theme/footer.styled';
-import { airtableBase } from '../../app';
 import { mapSocialsData } from '../../services/mappers';
 
 import Logo from '../../assets/Logo.svg';
+import { fetchAirtableRecords } from '../../api';
 
 interface HeaderProps {
 	currentTab: string;
@@ -22,14 +22,17 @@ export const Header: FC<HeaderProps> = ({ currentTab }) => {
 	const [data, setData] = useState([]);
 
 	useEffect(() => {
-		airtableBase('Socials')
-			.select({
-				view: 'Grid view',
-			})
-			.eachPage(records => {
+		const fetchSocialLinksData = async () => {
+			try {
+				const records = await fetchAirtableRecords({ tableName: 'Socials' });
+
 				// @ts-ignore
-				return setData(mapSocialsData(records));
-			});
+				setData(mapSocialsData(records));
+			} catch (error) {
+				console.error('Error fetching social links data:', error);
+			}
+		};
+		fetchSocialLinksData().catch(console.error);
 	}, []);
 
 	const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {

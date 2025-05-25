@@ -6,10 +6,10 @@ import Typography from '../../components/Typography';
 import { CurrentTabProps } from '../../models/active-tab.model';
 import { useCustomIntersectionObserver } from 'src/hooks/intersectionObserver';
 
-import { airtableBase } from '../../app';
 import { mapContactsData, mapSocialsData } from '../../services/mappers';
 
 import { contactsStyle, socialMediaStyle } from './theme/footer.styled';
+import { fetchAirtableRecords } from '../../api';
 
 interface FooterProps extends CurrentTabProps {}
 
@@ -22,27 +22,33 @@ export const Footer: FC<FooterProps> = ({ currentTab, handleOnView }) => {
 	useCustomIntersectionObserver(ref, currentTab, handleOnView);
 
 	useEffect(() => {
-		airtableBase('Contacts')
-			.select({
-				view: 'Grid view',
-			})
-			.eachPage(records => {
+		const fetchContactsData = async () => {
+			try {
+				const records = await fetchAirtableRecords({ tableName: 'Contacts' });
+
 				// @ts-ignore
-				return setData(mapContactsData(records));
-			});
+				setData(mapContactsData(records));
+			} catch (error) {
+				console.error('Error fetching contacts data:', error);
+			}
+		};
+		fetchContactsData().catch(console.error);
 	}, []);
 
 	useEffect(() => {
-		airtableBase('Socials')
-			.select({
-				view: 'Grid view',
-			})
-			.eachPage(records => {
+		const fetchSocialLinksData = async () => {
+			try {
+				const records = await fetchAirtableRecords({ tableName: 'Socials' });
+
 				// @ts-ignore
-				return setSocialLinks(mapSocialsData(records));
-			});
+				setSocialLinks(mapSocialsData(records));
+			} catch (error) {
+				console.error('Error fetching social links data:', error);
+			}
+		};
+		fetchSocialLinksData().catch(console.error);
 	}, []);
-	console.log(data);
+
 	return (
 		<Typography
 			component="footer"
